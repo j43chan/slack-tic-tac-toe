@@ -16,12 +16,11 @@ public class AcceptManager {
             gameRoom.setGameInProgress(true);
             slackResponse
                     .changeResponseTypeToInChannel()
+                    .setText(gameRoom.toString())
                     .addAttachmentText("Challenged Accepted by " + slackRequest.getUser_name());
 
 
-            for( int i = 0; i < 3; i ++){
-                slackResponse.addButtonsForAttachment(gameRoom.generateBoardButtonsForRow(i));
-            }
+
 
         }else{
             slackResponse

@@ -1,8 +1,5 @@
 package com.jermaine.tictactoe.models;
 
-import java.util.ArrayList;
-import java.util.Vector;
-
 public class TicTacToe {
     private char board[][] = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
     private String player1Name;
@@ -17,33 +14,21 @@ public class TicTacToe {
 
     @Override
     public String toString() {
+
         StringBuilder boardString = new StringBuilder();
-        boardString.append("```");
-        boardString.append("|").append(board[0][0]).append("|").append(board[0][1]).append("|").append(board[0][2]).append("|").append("\n");
-        boardString.append("|").append(board[1][0]).append("|").append(board[1][1]).append("|").append(board[1][2]).append("|").append("\n");
-        boardString.append("|").append(board[2][0]).append("|").append(board[2][1]).append("|").append(board[2][2]).append("|").append("\n");
-        boardString.append("```");
+        boardString.append("```| 1 | 2 | 3 |\n|---+---+---|\n| 4 | 5 | 6 |\n|---+---+---|\n| 7 | 8 | 9 |```");
+        boardString.setCharAt( 5, board[0][0]);
+        boardString.setCharAt( 9, board[0][1]);
+        boardString.setCharAt( 13, board[0][2]);
+
+        boardString.setCharAt( 33, board[1][0]);
+        boardString.setCharAt( 37, board[1][1]);
+        boardString.setCharAt( 41, board[1][2]);
+
+        boardString.setCharAt( 61, board[2][0]);
+        boardString.setCharAt( 65, board[2][1]);
+        boardString.setCharAt( 69, board[2][2]);
         return boardString.toString();
-    }
-
-    public Vector<SlackMsgButton> generateBoardButtonsForRow(int row){
-        Vector<SlackMsgButton> buttons = new Vector<>();
-        for( int j = 0; j < 3; j ++ ){
-            SlackMsgButton newButton = new SlackMsgButton();
-            newButton.text = getButtonText(board[row][j]);
-            buttons.add( newButton );
-        }
-        return buttons;
-    }
-
-    private String getButtonText( char token){
-        if( token =='x'){
-            return ":X:";
-        }else if( token =='o'){
-            return ":O:";
-        }else{
-            return "----";
-        }
     }
 
     public String getPlayer1Name() {

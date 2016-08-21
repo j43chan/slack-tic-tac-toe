@@ -18,6 +18,11 @@ public class CommandController implements ErrorController {
     private PlayManager playManager = new PlayManager();
     private SurrenderManager surrenderManager = new SurrenderManager();
 
+    @RequestMapping(value="/tictactoe/update")
+    public void update(SlackRequest request){
+
+    }
+
     @RequestMapping(value="/tictactoe")
     public SlackResponse tictactoe(SlackRequest request){
         SlackResponse slackResponse = new SlackResponse();

@@ -36,15 +36,6 @@ public class SlackResponse {
         return this;
     }
 
-    public SlackResponse addButtonsForAttachment(Vector<SlackMsgButton> buttons ){
-        SlackAttachment newAttachment = new SlackAttachment();
-        for( SlackMsgButton button: buttons){
-            newAttachment.setButtons(button);
-        }
-        attachments.add(newAttachment);
-        return this;
-    }
-
     public SlackResponse setText(final String replyText){
         text = replyText;
         return this;
