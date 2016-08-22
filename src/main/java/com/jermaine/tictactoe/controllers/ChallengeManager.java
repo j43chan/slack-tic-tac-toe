@@ -3,33 +3,40 @@ package com.jermaine.tictactoe.controllers;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.TicTacToe;
-
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ChallengeManager {
     public ChallengeManager(){
     }
 
-    boolean startChallenge(final SlackRequest slackRequest, SlackResponse slackResponse, final  String challengedUser, HashMap<String, TicTacToe> gameRoomList){
-        //check to see if a new challenge can be issued, since only one game can be played per channel
-        if( gameRoomList.containsKey(slackRequest.getChannel_id()) ){
-            slackResponse
-                    .changeResponseTypeToEphemeral()
-                    .setText("Challenged already issued, or A game is in progress; please either end the game by surrendering, or finish game before reissuing another challenge.")
-                    .includeAvailableCommands();
+    public synchronized SlackResponse startChallenge(final SlackRequest slackRequest,
+                           final String challengedUser,
+                           ConcurrentHashMap<String, TicTacToe> gameRoomList){
 
-            return false;
+        //check to see if a new challenge can be issued since only one game can be played per channel
+        //use channel id instead of channel name incase something gets renamed.
+        if( gameRoomList.containsKey(slackRequest.getChannel_id()) ){
+            return new SlackResponse().setText("Challenged already issued, or a game is in progress; please wait for the game to start, or finish game before reissuing another challenge.");
         }
 
-        TicTacToe ttt = new TicTacToe();
-        ttt.setPlayer1Name(slackRequest.getUser_name());
-        ttt.setPlayer2Name(challengedUser);
-        ttt.setGameInProgress(false);
-        gameRoomList.put( slackRequest.getChannel_id(), ttt );
-        slackResponse
-                .changeResponseTypeToInChannel()
-                .setText(slackRequest.getUser_name() + " has issued a ttt challenged to " + challengedUser +"\n" + challengedUser + " type /ttt accept to start the game!");
+        //create a new game of tictactoe and associate it with the requested channel.
+        TicTacToe newGameRoom = new TicTacToe();
+        newGameRoom.setPlayer1Name(slackRequest.getUser_name());
+        newGameRoom.setPlayer2Name(challengedUser); //we set the challenged user here so that later on we can verify who accepts the challenge.
+        newGameRoom.setPlayer1UserId(slackRequest.getUser_id());
+        gameRoomList.put( slackRequest.getChannel_id(), newGameRoom );
 
-        return true;
+        StringBuilder challengeMsg = new StringBuilder(slackRequest.getUser_name());
+        challengeMsg = challengeMsg.append(" has issued a ttt challenge to ")
+                        .append(challengedUser)
+                        .append("\n")
+                        .append("<@")
+                        .append(challengedUser)
+                        .append("> ")
+                        .append("type ```/ttt accept``` to start the game!");
+
+        return new SlackResponse()
+                .changeResponseTypeToInChannel()
+                .setText(challengeMsg.toString());
     }
 }

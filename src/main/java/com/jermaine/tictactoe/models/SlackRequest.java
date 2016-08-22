@@ -1,7 +1,5 @@
 package com.jermaine.tictactoe.models;
 
-import com.google.gson.Gson;
-
 public class SlackRequest {
     String token;
     String team_id;
@@ -92,10 +90,5 @@ public class SlackRequest {
 
     public void setResponse_url(String response_url) {
         this.response_url = response_url;
-    }
-
-    public String toString(){
-        Gson gson = new Gson();
-        return gson.toJson(this);
     }
 }

@@ -7,11 +7,12 @@ public class SlackResponse {
     String response_type = "ephemeral";
     Vector<SlackAttachment> attachments = new Vector<>();
     boolean hasIncludedAvailableCommand = false;
-    final static String availableCommand =  "challenge [user_name] - issues a ttt challege towards [user_name] \n" +
-                                            "accept - starts a ttt game after being challeged \n" +
-                                            "play [row] [col] - puts your token down at [row] [col], note numbers need to be between 1 - 3 \n" +
-                                            "surrender - you surrender the game, and the other player wins \n";
-
+    boolean hasIncludedPlayCommand = false;
+    final static String playCommand = "/ttt play [row] [col] - numbers between (1 - 3) \n";
+    final static String availableCommand =  "```/ttt challenge [user_name] - issues a ttt challege \n" +
+                                            "/ttt accept - accepts a ttt challeged \n" +
+                                            playCommand +
+                                            "/ttt drop - drops a game waiting to be accepted \n```";
 
     public SlackResponse changeResponseTypeToEphemeral(){
         response_type = "ephemeral";
@@ -23,6 +24,12 @@ public class SlackResponse {
         return this;
     }
 
+    public SlackResponse includePlayCommand(){
+        if( hasIncludedPlayCommand)
+            return this;
+        return addAttachmentText(playCommand);
+    }
+
     public SlackResponse includeAvailableCommands(){
         if( hasIncludedAvailableCommand )
             return this;
@@ -30,7 +37,11 @@ public class SlackResponse {
     }
 
     public SlackResponse addAttachmentText(final String attachmentText){
+        return addAttachmentText(null, attachmentText);
+    }
+    public SlackResponse addAttachmentText(final String preText, final String attachmentText){
         SlackAttachment newAttachment = new SlackAttachment();
+        newAttachment.setPretext(preText);
         newAttachment.setText(attachmentText);
         attachments.add(newAttachment);
         return this;

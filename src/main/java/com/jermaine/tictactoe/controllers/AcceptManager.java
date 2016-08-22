@@ -4,28 +4,34 @@ import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.TicTacToe;
 
+import java.util.Map;
+
 public class AcceptManager {
-    public void accept(SlackRequest slackRequest, TicTacToe gameRoom, SlackResponse slackResponse){
-        if( gameRoom.getGameInProgress() == true ){
-            slackResponse
-                    .changeResponseTypeToEphemeral()
-                    .setText("Game is already in progress");
-            return;
+    public SlackResponse accept(final SlackRequest slackRequest, final Map<String,TicTacToe> gameRoomList){
+        TicTacToe gameRoom = gameRoomList.get(slackRequest.getChannel_id());
+
+        if( gameRoom == null ){
+            return new SlackResponse()
+                    .setText("you must be challenged before accepting a request");
         }
-        if( slackRequest.getUser_name().equals(gameRoom.getPlayer2Name()) ){
-            gameRoom.setGameInProgress(true);
-            slackResponse
-                    .changeResponseTypeToInChannel()
-                    .setText(gameRoom.toString())
-                    .addAttachmentText("Challenged Accepted by " + slackRequest.getUser_name());
 
+        if( gameRoom.hasGameStarted() ){
+            return new SlackResponse()
+                    .setText("Game is already in progress");
+        }
 
-
-
-        }else{
-            slackResponse
-                    .changeResponseTypeToEphemeral()
+        if( false == slackRequest.getUser_name().equals(gameRoom.getPlayer2Name()) ){
+            return new SlackResponse()
                     .setText("You are not the one being challenged");
         }
+
+        gameRoom.setPlayer2UserId(slackRequest.getUser_id());
+        gameRoom.startGame();
+
+        return new SlackResponse()
+                .changeResponseTypeToInChannel()
+                .setText(gameRoom.getSlackRepresentationOfBoard())
+                .addAttachmentText(gameRoom.currentTurnInformation())
+                .includePlayCommand();
     }
 }

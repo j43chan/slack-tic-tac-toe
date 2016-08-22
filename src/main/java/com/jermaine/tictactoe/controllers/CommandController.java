@@ -6,58 +6,70 @@ import com.jermaine.tictactoe.models.TicTacToe;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 public class CommandController implements ErrorController {
     public final static String SLACK_TOKEN = "KmL99uWHnNnIj8TwAkhFqc6B";
-    private static HashMap<String, TicTacToe> gameRoomList = new HashMap<>();
+    private final static ConcurrentHashMap<String, TicTacToe> gameRoomList = new ConcurrentHashMap<>(); //mapping for channel names to games
     private ChallengeManager challengeManager = new ChallengeManager();
     private AcceptManager acceptManager = new AcceptManager();
     private PlayManager playManager = new PlayManager();
-    private SurrenderManager surrenderManager = new SurrenderManager();
-
-    @RequestMapping(value="/tictactoe/update")
-    public void update(SlackRequest request){
-
-    }
+    private DropChallengeManager dropChallengeManager = new DropChallengeManager();
 
     @RequestMapping(value="/tictactoe")
     public SlackResponse tictactoe(SlackRequest request){
-        SlackResponse slackResponse = new SlackResponse();
         //check to make sure token is from registered team
-        if( request.getToken()!= null && false == request.getToken().equals(SLACK_TOKEN) ){
-            return slackResponse
+        if( request.getToken() == null || false == request.getToken().equals(SLACK_TOKEN) ){
+            return new SlackResponse()
                     .changeResponseTypeToEphemeral()
                     .setText("Your slack team is not supported!");
         }
 
+        if( request.getChannel_id() == null ){
+            return new SlackResponse().setText("invalid channel id");
+        }
 
         if( request.getText() == null ){
-            return slackResponse
+            return new SlackResponse()
                     .changeResponseTypeToEphemeral()
                     .setText("make sure you specify a command");
         }
+
         String token[] = request.getText().split(" ");
         String command = token[0];
+        if( command != null ){
+            command = command.toLowerCase();
+        }
 
-        switch( command ){
-            case "challenge":
-                challengeManager.startChallenge( request, slackResponse, token[1], gameRoomList );
-                break;
-            case "accept":
-                acceptManager.accept(request, gameRoomList.get(request.getChannel_id()), slackResponse);
-                break;
-            case "play":
-                playManager.startPlay(gameRoomList.get(request.getChannel_id()), token[1], token[2], slackResponse);
-                break;
-            case "surrender":
-                surrenderManager.surrender();
-                break;
-            case "help":
-            default:
-                slackResponse.includeAvailableCommands();
+        SlackResponse slackResponse;
+
+        try {
+            switch (command) {
+                case "challenge":
+                    slackResponse = challengeManager.startChallenge(request, token[1], gameRoomList);
+                    break;
+                case "accept":
+                    slackResponse = acceptManager.accept(request, gameRoomList);
+                    break;
+                case "play":
+                    slackResponse = playManager.startPlay(request, token[1], token[2], gameRoomList);
+                    break;
+                case "drop":
+                    slackResponse = dropChallengeManager.start(request, gameRoomList);
+                    break;
+                case "help":
+                    slackResponse = new SlackResponse().includeAvailableCommands();
+                    break;
+                default:
+                    throw new Exception("Invalid Command");
+            }
+        }
+        catch (Exception e){
+            //invalid parameters passed in, print the command list for user
+            slackResponse = new SlackResponse()
+                    .includeAvailableCommands()
+                    .setText("invalid command/parameters");
         }
 
         return slackResponse;
