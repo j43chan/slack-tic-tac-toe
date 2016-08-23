@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.jermaine.tictactoe.controllers.DropChallengeManagerTest" time="0.004" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.jermaine.tictactoe.controllers.DropChallengeManagerTest" time="0.005" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2016.2.2"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -13,7 +13,7 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="idea.launcher.port" value="7533"/>
+    <property name="idea.launcher.port" value="7538"/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
@@ -64,9 +64,9 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="start_When_Game_Room_Is_Not_In_Waiting_To_Be_Accepted_State_Returns_Error" classname="com.jermaine.tictactoe.controllers.DropChallengeManagerTest" time="0"/>
+  <testcase name="start_When_Game_Room_Is_Not_In_Waiting_To_Be_Accepted_State_Returns_Error" classname="com.jermaine.tictactoe.controllers.DropChallengeManagerTest" time="0.001"/>
   <testcase name="start_Invalid_Slack_Request_Throws_Invalid_Object_Exception" classname="com.jermaine.tictactoe.controllers.DropChallengeManagerTest" time="0"/>
   <testcase name="start_When_Game_Room_Does_Not_Exist_Returns_Error" classname="com.jermaine.tictactoe.controllers.DropChallengeManagerTest" time="0.001"/>
   <testcase name="start_When_Game_Room_Is_In_Waiting_State_And_Wrong_User_Drops_Returns_Error" classname="com.jermaine.tictactoe.controllers.DropChallengeManagerTest" time="0.001"/>
-  <testcase name="start_When_Dropping_Game_You_Created_In_Waiting_State_Returns_Success" classname="com.jermaine.tictactoe.controllers.DropChallengeManagerTest" time="0.001"/>
+  <testcase name="start_When_Dropping_Game_You_Created_In_Waiting_State_Returns_Success" classname="com.jermaine.tictactoe.controllers.DropChallengeManagerTest" time="0.002"/>
 </testsuite>

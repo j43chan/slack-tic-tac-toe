@@ -3,7 +3,7 @@ package com.jermaine.tictactoe.controllers;
 import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
-import com.jermaine.tictactoe.models.TicTacToe;
+import com.jermaine.tictactoe.models.GameRoom;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 public class ChallengeManagerTest {
     private ChallengeManager subject;
     private SlackRequest fakeRequest;
-    private Map<String, TicTacToe> fakeGameList;
+    private Map<String, GameRoom> fakeGameList;
 
     @Before
     public void setUp(){
@@ -78,5 +78,11 @@ public class ChallengeManagerTest {
         assertTrue(response.getResponse_type().equals("in_channel"));
         assertTrue(response.getText().equals("user_1 has issued a ttt challenge to challenged_user\n<@challenged_user> type ```/ttt accept``` to start the game!"));
     }
+
+    @Test
+    public void startChallenge_2_Request_Different_Channel_Id_Creates_2_Game_Rooms(){
+
+    }
 }
+
 

@@ -3,7 +3,7 @@ package com.jermaine.tictactoe.controllers;
 import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
-import com.jermaine.tictactoe.models.TicTacToe;
+import com.jermaine.tictactoe.models.GameRoom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @RestController
 public class CommandController implements ErrorController {
     public final static String SLACK_TOKEN = "KmL99uWHnNnIj8TwAkhFqc6B";
-    private final static ConcurrentHashMap<String, TicTacToe> gameRoomList = new ConcurrentHashMap<>(); //mapping for channel names to games
+    private final static ConcurrentHashMap<String, GameRoom> gameRoomList = new ConcurrentHashMap<>(); //mapping for channel names to games
 
     @Autowired
     private ChallengeManager challengeManager;

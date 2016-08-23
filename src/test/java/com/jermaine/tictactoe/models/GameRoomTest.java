@@ -11,14 +11,14 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class TicTacToeTest {
-    TicTacToe subject;
+public class GameRoomTest {
+    GameRoom subject;
     int boardSetupWithX[][] = {{1,1,1},{1,1,1},{1,1,1}};
     int boardSetupWithO[][] = {{-1,-1,-1},{-1,-1,-1},{-1,-1,-1}};
     int boardSetupMix[][] = {{1,-1,0},{1,-1,0},{1,-1,0}};
     @Before
     public void setUp(){
-        subject = spy(new TicTacToe());
+        subject = spy(new GameRoom());
         subject.player1Name = "player_1";
         subject.player2Name = "player_2";
     }
@@ -47,7 +47,7 @@ public class TicTacToeTest {
     @Test
     public void getTurnInfo_When_Player1_Turn_And_Win_State_Return_Player1_Wins_Message(){
         subject.currentPlayerTurn = 1;
-        subject.gameState = TicTacToe.GAME_STATE.WIN;
+        subject.gameState = GameRoom.GAME_STATE.WIN;
         String reply = subject.getTurnInfo();
         assertTrue(reply.equals("Game has ended player_1 wins!"));
     }
@@ -55,7 +55,7 @@ public class TicTacToeTest {
     @Test
     public void getTurnInfo_When_Player1_Turn_And_Draw_State_Return_Draw_Game_Message(){
         subject.currentPlayerTurn = 1;
-        subject.gameState = TicTacToe.GAME_STATE.DRAW;
+        subject.gameState = GameRoom.GAME_STATE.DRAW;
         String reply = subject.getTurnInfo();
         assertTrue(reply.equals("Game has ended in a draw"));
     }
@@ -63,7 +63,7 @@ public class TicTacToeTest {
     @Test
     public void getTurnInfo_When_Player1_Turn_And_Started_State_Return_Player_1_Turn_Message(){
         subject.currentPlayerTurn = 1;
-        subject.gameState = TicTacToe.GAME_STATE.STARTED;
+        subject.gameState = GameRoom.GAME_STATE.STARTED;
         String reply = subject.getTurnInfo();
         assertTrue(reply.equals("<@player_1> it is your turn to play"));
     }
@@ -71,7 +71,7 @@ public class TicTacToeTest {
     @Test
     public void getTurnInfo_When_Player2_Turn_And_Win_State_Return_Player2_Wins_Message(){
         subject.currentPlayerTurn = 2;
-        subject.gameState = TicTacToe.GAME_STATE.WIN;
+        subject.gameState = GameRoom.GAME_STATE.WIN;
         String reply = subject.getTurnInfo();
         assertTrue(reply.equals("Game has ended player_2 wins!"));
     }
@@ -79,7 +79,7 @@ public class TicTacToeTest {
     @Test
     public void getTurnInfo_When_Player2_Turn_And_Draw_State_Return_Draw_Game_Message(){
         subject.currentPlayerTurn = 2;
-        subject.gameState = TicTacToe.GAME_STATE.DRAW;
+        subject.gameState = GameRoom.GAME_STATE.DRAW;
         String reply = subject.getTurnInfo();
         assertTrue(reply.equals("Game has ended in a draw"));
     }
@@ -87,7 +87,7 @@ public class TicTacToeTest {
     @Test
     public void getTurnInfo_When_Player2_Turn_And_Started_State_Return_Player_2_Turn_Message(){
         subject.currentPlayerTurn = 2;
-        subject.gameState = TicTacToe.GAME_STATE.STARTED;
+        subject.gameState = GameRoom.GAME_STATE.STARTED;
         String reply = subject.getTurnInfo();
         assertTrue(reply.equals("<@player_2> it is your turn to play"));
     }
@@ -112,29 +112,29 @@ public class TicTacToeTest {
 
     @Test
     public void playTurn_When_Empty_Spot_Wins_Game_And_Returns_True(){
-        subject.gameState = TicTacToe.GAME_STATE.STARTED;
+        subject.gameState = GameRoom.GAME_STATE.STARTED;
         when(subject.checkWin(anyInt(),anyInt(),anyInt())).thenReturn(true);
         assertTrue(subject.playTurn(0,0));
-        assertTrue(subject.gameState == TicTacToe.GAME_STATE.WIN);
+        assertTrue(subject.gameState == GameRoom.GAME_STATE.WIN);
     }
 
     @Test
     public void playTurn_When_Empty_Spot_Draws_Game_And_Returns_True(){
-        subject.gameState = TicTacToe.GAME_STATE.STARTED;
+        subject.gameState = GameRoom.GAME_STATE.STARTED;
         when(subject.checkWin(anyInt(),anyInt(),anyInt())).thenReturn(false);
         when(subject.checkDraw()).thenReturn(true);
         assertTrue(subject.playTurn(0,0));
-        assertTrue(subject.gameState == TicTacToe.GAME_STATE.DRAW);
+        assertTrue(subject.gameState == GameRoom.GAME_STATE.DRAW);
     }
 
     @Test
     public void playTurn_When_Empty_Spot_Calls_Change_Turn_And_Returns_True(){
-        subject.gameState = TicTacToe.GAME_STATE.STARTED;
+        subject.gameState = GameRoom.GAME_STATE.STARTED;
         when(subject.checkWin(anyInt(),anyInt(),anyInt())).thenReturn(false);
         when(subject.checkDraw()).thenReturn(false);
         assertTrue(subject.playTurn(0,0));
         verify(subject).changeTurn();
-        assertTrue(subject.gameState == TicTacToe.GAME_STATE.STARTED);
+        assertTrue(subject.gameState == GameRoom.GAME_STATE.STARTED);
     }
 
     @Test
@@ -277,14 +277,14 @@ public class TicTacToeTest {
 
     @Test
     public void changeTurn_When_Game_Not_Started_Current_Player_Turn_Negative_1(){
-        subject.gameState = TicTacToe.GAME_STATE.CREATED;
+        subject.gameState = GameRoom.GAME_STATE.CREATED;
         subject.changeTurn();
         assertTrue(subject.currentPlayerTurn == -1);
     }
 
     @Test
     public void changeTurn_When_Game_Started_Swap_Player_Turns(){
-        subject.gameState = TicTacToe.GAME_STATE.STARTED;
+        subject.gameState = GameRoom.GAME_STATE.STARTED;
         subject.currentPlayerTurn = 1;
         subject.changeTurn();
         assertTrue(subject.currentPlayerTurn == 2);
@@ -294,19 +294,19 @@ public class TicTacToeTest {
 
     @Test
     public void startGame_When_Current_State_Is_Created_Change_State_To_Started(){
-        subject.gameState = TicTacToe.GAME_STATE.CREATED;
+        subject.gameState = GameRoom.GAME_STATE.CREATED;
         subject.startGame();
-        assertTrue(subject.gameState == TicTacToe.GAME_STATE.STARTED);
+        assertTrue(subject.gameState == GameRoom.GAME_STATE.STARTED);
     }
 
     @Test
     public void startGame_When_Current_State_Is_End_Game_Does_A_No_Op(){
-        subject.gameState = TicTacToe.GAME_STATE.WIN;
+        subject.gameState = GameRoom.GAME_STATE.WIN;
         subject.startGame();
-        assertTrue(subject.gameState == TicTacToe.GAME_STATE.WIN);
-        subject.gameState = TicTacToe.GAME_STATE.DRAW;
+        assertTrue(subject.gameState == GameRoom.GAME_STATE.WIN);
+        subject.gameState = GameRoom.GAME_STATE.DRAW;
         subject.startGame();
-        assertTrue(subject.gameState == TicTacToe.GAME_STATE.DRAW);
+        assertTrue(subject.gameState == GameRoom.GAME_STATE.DRAW);
     }
 
 

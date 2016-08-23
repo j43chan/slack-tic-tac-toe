@@ -3,7 +3,7 @@ package com.jermaine.tictactoe.controllers;
 import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
-import com.jermaine.tictactoe.models.TicTacToe;
+import com.jermaine.tictactoe.models.GameRoom;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,13 +21,13 @@ import static org.mockito.Mockito.*;
 public class PlayManagerTest {
     private PlayManager subject;
     private SlackRequest fakeRequest;
-    private Map<String, TicTacToe> fakeGameList;
-    private TicTacToe fakeGameRoom;
+    private Map<String, GameRoom> fakeGameList;
+    private GameRoom fakeGameRoom;
     @Before
     public void setUp(){
         fakeRequest = mock(SlackRequest.class);
         when(fakeRequest.getChannel_id()).thenReturn("fake_channel_id");
-        fakeGameRoom = mock(TicTacToe.class);
+        fakeGameRoom = mock(GameRoom.class);
         fakeGameList = mock(HashMap.class);
         subject = new PlayManager();
     }

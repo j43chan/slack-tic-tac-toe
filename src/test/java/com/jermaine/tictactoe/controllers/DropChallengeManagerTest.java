@@ -3,7 +3,7 @@ package com.jermaine.tictactoe.controllers;
 import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
-import com.jermaine.tictactoe.models.TicTacToe;
+import com.jermaine.tictactoe.models.GameRoom;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,13 +22,13 @@ import static org.mockito.Mockito.*;
 public class DropChallengeManagerTest {
     private DropChallengeManager subject;
     private SlackRequest fakeRequest;
-    private Map<String, TicTacToe> fakeGameList;
-    private TicTacToe fakeGameRoom;
+    private Map<String, GameRoom> fakeGameList;
+    private GameRoom fakeGameRoom;
     @Before
     public void setUp(){
         fakeRequest = mock(SlackRequest.class);
         when(fakeRequest.getChannel_id()).thenReturn("fake_channel_id");
-        fakeGameRoom = mock(TicTacToe.class);
+        fakeGameRoom = mock(GameRoom.class);
         fakeGameList = mock(HashMap.class);
         subject = new DropChallengeManager();
     }
@@ -67,7 +67,7 @@ public class DropChallengeManagerTest {
     @Test
     public void start_When_Game_Room_Is_Not_In_Waiting_To_Be_Accepted_State_Returns_Error() throws InvalidSlackRequest{
         when(fakeGameList.get(anyString())).thenReturn(fakeGameRoom);
-        when(fakeGameRoom.getLock()).thenReturn(new Object());
+        when(fakeGameList.containsKey(anyString())).thenReturn(true);
         when(fakeGameRoom.isWaitingToBeAccepted()).thenReturn(false);
         SlackResponse response = subject.start(fakeRequest, fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
@@ -77,7 +77,7 @@ public class DropChallengeManagerTest {
     @Test
     public void start_When_Game_Room_Is_In_Waiting_State_And_Wrong_User_Drops_Returns_Error() throws  InvalidSlackRequest{
         when(fakeGameList.get(anyString())).thenReturn(fakeGameRoom);
-        when(fakeGameRoom.getLock()).thenReturn(new Object());
+        when(fakeGameList.containsKey(anyString())).thenReturn(true);
         when(fakeGameRoom.isWaitingToBeAccepted()).thenReturn(true);
         when(fakeGameRoom.getPlayer1Name()).thenReturn("fake_name");
         when(fakeRequest.getUser_name()).thenReturn("a_different_fake_name");
@@ -89,7 +89,7 @@ public class DropChallengeManagerTest {
     @Test
     public void start_When_Dropping_Game_You_Created_In_Waiting_State_Returns_Success() throws InvalidSlackRequest{
         when(fakeGameList.get(anyString())).thenReturn(fakeGameRoom);
-        when(fakeGameRoom.getLock()).thenReturn(new Object());
+        when(fakeGameList.containsKey(anyString())).thenReturn(true);
         when(fakeGameRoom.isWaitingToBeAccepted()).thenReturn(true);
         when(fakeGameRoom.getPlayer1Name()).thenReturn("same_fake_name");
         when(fakeRequest.getUser_name()).thenReturn("same_fake_name");

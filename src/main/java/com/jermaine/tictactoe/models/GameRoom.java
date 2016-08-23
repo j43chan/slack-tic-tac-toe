@@ -2,7 +2,7 @@ package com.jermaine.tictactoe.models;
 
 import java.util.Random;
 
-public class TicTacToe {
+public class GameRoom {
     protected int board[][] = {{0,0,0},{0,0,0},{0,0,0}};
     protected String player1Name;
     protected String player2Name;
@@ -19,7 +19,6 @@ public class TicTacToe {
     private int[] rowCount = {0, 0, 0};
     private int diagCount = 0;
     private int reverseDiagCount = 0;
-    private Object lock = new Object(); //lock for accepting and dropping game.
 
     protected enum GAME_STATE {
         CREATED,
@@ -236,9 +235,5 @@ public class TicTacToe {
 
     public boolean isWaitingToBeAccepted(){
         return gameState == GAME_STATE.CREATED;
-    }
-
-    public Object getLock(){
-        return lock;
     }
 }
