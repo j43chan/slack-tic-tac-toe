@@ -21,6 +21,15 @@ public class AcceptManager {
                     .setText("you must be challenged before accepting a request");
         }
 
+        /*
+            NOTE: This is synchronized to prevent Concurrent accept/drop requests
+            EXAMPLE: Thread 1 comes in and tries to start game
+                     Thread 2 comes in and tries to drop game
+                     We need to makre sure these 2 events never interleave
+
+            The Synchronization happens on object level so it will not block for requests
+            with different channel ids.
+         */
         synchronized (gameRoom) {
 
             if(false == gameRoomList.containsKey(slackRequest.getChannel_id())){

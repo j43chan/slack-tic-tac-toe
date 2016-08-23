@@ -21,6 +21,13 @@ public class PlayManager {
                     .setText("There is no game associated with this channel; please challenge someone to start a game.");
         }
 
+        /*
+            NOTE: This is synchronized to prevent Concurrent play/play requests
+            This is to prevent players from making more then 1 move per turn.
+
+            The Synchronization happens on object level so it will not block for requests
+            with different channel ids.
+         */
         synchronized (gameRoom) {
 
             if (false == gameRoom.hasGameStarted()) {

@@ -20,6 +20,11 @@ public class DropChallengeManager {
             return new SlackResponse().setText("the current channel has no game in progress");
         }
 
+        /*
+            NOTE: This is synchronized to prevent Concurrent accept/drop requests
+            The Synchronization happens on object level so it will not block for requests
+            with different channel ids.
+         */
         synchronized (gameRoom) {
 
             if( false == gameRoomList.containsKey(slackRequest.getChannel_id())){
