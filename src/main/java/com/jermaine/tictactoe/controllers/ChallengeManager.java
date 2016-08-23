@@ -1,9 +1,10 @@
 package com.jermaine.tictactoe.controllers;
 
+import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.TicTacToe;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
 
 public class ChallengeManager {
     public ChallengeManager(){
@@ -11,7 +12,11 @@ public class ChallengeManager {
 
     public synchronized SlackResponse startChallenge(final SlackRequest slackRequest,
                            final String challengedUser,
-                           ConcurrentHashMap<String, TicTacToe> gameRoomList){
+                           Map<String, TicTacToe> gameRoomList) throws InvalidSlackRequest{
+
+        if( slackRequest == null || slackRequest.getChannel_id() == null ){
+            throw new InvalidSlackRequest("missing channel id");
+        }
 
         //check to see if a new challenge can be issued since only one game can be played per channel
         //use channel id instead of channel name incase something gets renamed.
@@ -22,8 +27,8 @@ public class ChallengeManager {
         //create a new game of tictactoe and associate it with the requested channel.
         TicTacToe newGameRoom = new TicTacToe();
         newGameRoom.setPlayer1Name(slackRequest.getUser_name());
-        newGameRoom.setPlayer2Name(challengedUser); //we set the challenged user here so that later on we can verify who accepts the challenge.
         newGameRoom.setPlayer1UserId(slackRequest.getUser_id());
+        newGameRoom.setPlayer2Name(challengedUser); //we set the challenged user here so that later on we can verify who accepts the challenge.
         gameRoomList.put( slackRequest.getChannel_id(), newGameRoom );
 
         StringBuilder challengeMsg = new StringBuilder(slackRequest.getUser_name());

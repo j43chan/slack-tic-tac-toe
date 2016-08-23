@@ -3,13 +3,13 @@ package com.jermaine.tictactoe.models;
 import java.util.Vector;
 
 public class SlackResponse {
-    String text;
-    String response_type = "ephemeral";
-    Vector<SlackAttachment> attachments = new Vector<>();
-    boolean hasIncludedAvailableCommand = false;
-    boolean hasIncludedPlayCommand = false;
-    final static String playCommand = "/ttt play [row] [col] - numbers between (1 - 3) \n";
-    final static String availableCommand =  "```/ttt challenge [user_name] - issues a ttt challege \n" +
+    protected String text;
+    protected String response_type = "ephemeral";
+    protected Vector<SlackAttachment> attachments = new Vector<>();
+    protected boolean hasIncludedAvailableCommand = false;
+    protected boolean hasIncludedPlayCommand = false;
+    public final static String playCommand = "/ttt play [row] [col] - numbers between (1 - 3) \n";
+    public final static String availableCommand =  "```/ttt challenge [user_name] - issues a ttt challege \n" +
                                             "/ttt accept - accepts a ttt challeged \n" +
                                             playCommand +
                                             "/ttt drop - drops a game waiting to be accepted \n```";
@@ -25,14 +25,16 @@ public class SlackResponse {
     }
 
     public SlackResponse includePlayCommand(){
-        if( hasIncludedPlayCommand)
+        if(hasIncludedPlayCommand)
             return this;
+        hasIncludedPlayCommand = true;
         return addAttachmentText(playCommand);
     }
 
     public SlackResponse includeAvailableCommands(){
         if( hasIncludedAvailableCommand )
             return this;
+        hasIncludedAvailableCommand = true;
         return addAttachmentText( availableCommand );
     }
 

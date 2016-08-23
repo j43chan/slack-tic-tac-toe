@@ -1,21 +1,25 @@
 package com.jermaine.tictactoe.controllers;
 
+import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.TicTacToe;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
 
 public class PlayManager {
-    public SlackResponse startPlay(final SlackRequest slackRequest, final String inputRow, final String inputCol, ConcurrentHashMap<String,TicTacToe> gameRoomList){
+    public SlackResponse startPlay(final SlackRequest slackRequest, final String inputRow, final String inputCol, Map<String,TicTacToe> gameRoomList) throws InvalidSlackRequest{
+        if( slackRequest == null || slackRequest.getChannel_id() == null ){
+            throw new InvalidSlackRequest("missing channel id");
+        }
+
         TicTacToe gameRoom = gameRoomList.get(slackRequest.getChannel_id());
         if( gameRoom == null ){
             return new SlackResponse()
-                    .setText("There is no game associated with this channel; please challenge someone to start a game.")
-                    .includeAvailableCommands();
+                    .setText("There is no game associated with this channel; please challenge someone to start a game.");
         }
 
         if(false == gameRoom.hasGameStarted()){
-            return new SlackResponse().setText("Game has not been accepted yet");
+            return new SlackResponse().setText("Game has not been accepted yet.");
         }
 
         //make sure it is the players turn
@@ -51,7 +55,7 @@ public class PlayManager {
             SlackResponse slackResponse = new SlackResponse()
                     .changeResponseTypeToInChannel()
                     .setText(gameRoom.getSlackRepresentationOfBoard())
-                    .addAttachmentText(gameRoom.currentTurnInformation());
+                    .addAttachmentText(gameRoom.getTurnInfo());
 
             //if a game has ended, remove it from the gameroom list so users can start another game in that channel.
             if(gameRoom.hasGameEnded()){

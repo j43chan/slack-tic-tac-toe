@@ -3,25 +3,25 @@ package com.jermaine.tictactoe.models;
 import java.util.Random;
 
 public class TicTacToe {
-    private int board[][] = {{0,0,0},{0,0,0},{0,0,0}};
-    private String player1Name;
-    private String player2Name;
+    protected int board[][] = {{0,0,0},{0,0,0},{0,0,0}};
+    protected String player1Name;
+    protected String player2Name;
     private String player1UserId;
     private String player2UserId;
     private String currentUserId;
-    private int currentToken = -1; // -1 for 0, 1 for X
-    private int currentPlayerTurn = -1; // 1 for player1, 2 for player 2
+    protected int currentToken = -1; // -1 for 0, 1 for X
+    protected int currentPlayerTurn = -1; // 1 for player1, 2 for player 2
     private final static Random random = new Random();
     private final int BOARD_SIZE = 3;
-    private int turnsRemaining = 9; //when this reaches 0, the match is a draw
-    private GAME_STATE gameState = GAME_STATE.CREATED;
+    protected int turnsRemaining = 9; //when this reaches 0, the match is a draw
+    protected volatile GAME_STATE gameState = GAME_STATE.CREATED;
     private int[] colCount = { 0, 0, 0};
     private int[] rowCount = {0, 0, 0};
     private int diagCount = 0;
     private int reverseDiagCount = 0;
+    private Object lock = new Object(); //lock for accepting and dropping game.
 
-
-    private enum GAME_STATE {
+    protected enum GAME_STATE {
         CREATED,
         STARTED,
         WIN,
@@ -36,21 +36,21 @@ public class TicTacToe {
     public String getSlackRepresentationOfBoard() {
         StringBuilder boardString = new StringBuilder();
         boardString.append("```| 1 | 2 | 3 |\n|---+---+---|\n| 4 | 5 | 6 |\n|---+---+---|\n| 7 | 8 | 9 |```");
-        boardString.setCharAt( 5, getTokenAsChar(0,0));
-        boardString.setCharAt( 9, getTokenAsChar(0,1));
-        boardString.setCharAt( 13, getTokenAsChar(0,2));
+        boardString.setCharAt( 5, getTokenAsCharFromBoardPosition(0,0));
+        boardString.setCharAt( 9, getTokenAsCharFromBoardPosition(0,1));
+        boardString.setCharAt( 13, getTokenAsCharFromBoardPosition(0,2));
 
-        boardString.setCharAt( 33, getTokenAsChar(1,0));
-        boardString.setCharAt( 37, getTokenAsChar(1,1));
-        boardString.setCharAt( 41, getTokenAsChar(1,2));
+        boardString.setCharAt( 33, getTokenAsCharFromBoardPosition(1,0));
+        boardString.setCharAt( 37, getTokenAsCharFromBoardPosition(1,1));
+        boardString.setCharAt( 41, getTokenAsCharFromBoardPosition(1,2));
 
-        boardString.setCharAt( 61, getTokenAsChar(2,0));
-        boardString.setCharAt( 65, getTokenAsChar(2,1));
-        boardString.setCharAt( 69, getTokenAsChar(2,2));
+        boardString.setCharAt( 61, getTokenAsCharFromBoardPosition(2,0));
+        boardString.setCharAt( 65, getTokenAsCharFromBoardPosition(2,1));
+        boardString.setCharAt( 69, getTokenAsCharFromBoardPosition(2,2));
         return boardString.toString();
     }
 
-    private char getTokenAsChar(int row, int col){
+    protected char getTokenAsCharFromBoardPosition(int row, int col){
         int token = board[row][col];
         if( token == -1){
             return 'O';
@@ -61,7 +61,7 @@ public class TicTacToe {
         }
     }
 
-    public String currentTurnInformation(){
+    public String getTurnInfo(){
         if(gameState == GAME_STATE.CREATED){
             return "Game has not been started!";
         }
@@ -106,7 +106,7 @@ public class TicTacToe {
         this.player2Name = player2Name;
     }
 
-    private int getNextToken(){
+    protected int getNextToken(){
         if( currentToken == 1){
             currentToken = -1;
         }else{
@@ -137,11 +137,18 @@ public class TicTacToe {
         return true;
     }
 
-    private boolean checkDraw(){
+    protected boolean checkDraw(){
         return turnsRemaining == 0;
     }
 
-    private boolean checkWin(int row, int col, int token){
+    protected boolean checkWin(int row, int col, int token){
+        if( row < 0
+                || row >= BOARD_SIZE
+                || col < 0
+                || col >= BOARD_SIZE
+                || (token != -1 && token != 0 && token != 1)){
+            return false;
+        }
 
         /**
          * keep track of running sum of each column, row and diag
@@ -170,7 +177,7 @@ public class TicTacToe {
         return false;
     }
 
-    private void changeTurn(){
+    protected void changeTurn(){
         if(gameState != GAME_STATE.STARTED){
             return;
         }
@@ -185,6 +192,9 @@ public class TicTacToe {
     }
 
     public void startGame() {
+        if( gameState != GAME_STATE.CREATED ){
+            return;
+        }
         //randomly assign who goes first
         currentPlayerTurn = random.nextInt(2) + 1;
         if( currentPlayerTurn == 1 ){
@@ -196,8 +206,16 @@ public class TicTacToe {
         gameState = GAME_STATE.STARTED;
     }
 
+    public String getPlayer1UserId() {
+        return player1UserId;
+    }
+
     public void setPlayer1UserId(String player1UserId) {
         this.player1UserId = player1UserId;
+    }
+
+    public String getPlayer2UserId(){
+        return player2UserId;
     }
 
     public void setPlayer2UserId(String player2UserId) {
@@ -218,5 +236,9 @@ public class TicTacToe {
 
     public boolean isWaitingToBeAccepted(){
         return gameState == GAME_STATE.CREATED;
+    }
+
+    public Object getLock(){
+        return lock;
     }
 }

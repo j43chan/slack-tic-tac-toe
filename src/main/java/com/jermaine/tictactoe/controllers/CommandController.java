@@ -1,8 +1,10 @@
 package com.jermaine.tictactoe.controllers;
 
+import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.TicTacToe;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,28 +14,32 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CommandController implements ErrorController {
     public final static String SLACK_TOKEN = "KmL99uWHnNnIj8TwAkhFqc6B";
     private final static ConcurrentHashMap<String, TicTacToe> gameRoomList = new ConcurrentHashMap<>(); //mapping for channel names to games
-    private ChallengeManager challengeManager = new ChallengeManager();
-    private AcceptManager acceptManager = new AcceptManager();
-    private PlayManager playManager = new PlayManager();
-    private DropChallengeManager dropChallengeManager = new DropChallengeManager();
+
+    @Autowired
+    private ChallengeManager challengeManager;
+
+    @Autowired
+    private AcceptManager acceptManager;
+
+    @Autowired
+    private PlayManager playManager;
+
+    @Autowired
+    private DropChallengeManager dropChallengeManager;
 
     @RequestMapping(value="/tictactoe")
     public SlackResponse tictactoe(SlackRequest request){
         //check to make sure token is from registered team
         if( request.getToken() == null || false == request.getToken().equals(SLACK_TOKEN) ){
-            return new SlackResponse()
-                    .changeResponseTypeToEphemeral()
-                    .setText("Your slack team is not supported!");
+            return new SlackResponse().setText("Your slack team is not supported! Please check your token!");
         }
 
-        if( request.getChannel_id() == null ){
+        if( request.getChannel_id() == null){
             return new SlackResponse().setText("invalid channel id");
         }
 
         if( request.getText() == null ){
-            return new SlackResponse()
-                    .changeResponseTypeToEphemeral()
-                    .setText("make sure you specify a command");
+            return new SlackResponse().setText("make sure you specify a command");
         }
 
         String token[] = request.getText().split(" ");
@@ -62,10 +68,10 @@ public class CommandController implements ErrorController {
                     slackResponse = new SlackResponse().includeAvailableCommands();
                     break;
                 default:
-                    throw new Exception("Invalid Command");
+                    throw new InvalidSlackRequest("Invalid Command");
             }
         }
-        catch (Exception e){
+        catch (InvalidSlackRequest|ArrayIndexOutOfBoundsException e){
             //invalid parameters passed in, print the command list for user
             slackResponse = new SlackResponse()
                     .includeAvailableCommands()
