@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.jermaine.tictactoe.models.TicTacToeTest" time="0.036" tests="38" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.jermaine.tictactoe.models.TicTacToeTest" time="0.034" tests="38" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2016.2.2"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -13,7 +13,7 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="idea.launcher.port" value="7538"/>
+    <property name="idea.launcher.port" value="7539"/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
@@ -64,42 +64,42 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="getTurnInfo_When_Player1_Turn_And_Win_State_Return_Player1_Wins_Message" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.014"/>
+  <testcase name="getTurnInfo_When_Player1_Turn_And_Win_State_Return_Player1_Wins_Message" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.015"/>
   <testcase name="getSlackRepresentationOfBoard" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
-  <testcase name="playTurn_When_Empty_Spot_Draws_Game_And_Returns_True" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="playTurn_When_Empty_Spot_Draws_Game_And_Returns_True" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
   <testcase name="checkWin_Diagonal_For_O" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
-  <testcase name="checkWin_Diagonal_For_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
-  <testcase name="getTurnInfo_When_Player2_Turn_And_Draw_State_Return_Draw_Game_Message" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
-  <testcase name="startGame_When_Current_State_Is_Created_Change_State_To_Started" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="checkWin_Diagonal_For_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
+  <testcase name="getTurnInfo_When_Player2_Turn_And_Draw_State_Return_Draw_Game_Message" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="startGame_When_Current_State_Is_Created_Change_State_To_Started" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
   <testcase name="getTurnInfo_When_Player2_Turn_And_Win_State_Return_Player2_Wins_Message" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
   <testcase name="changeTurn_When_Game_Not_Started_Current_Player_Turn_Negative_1" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
-  <testcase name="playTurn_When_Empty_Spot_Wins_Game_And_Returns_True" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
-  <testcase name="checkDraw_Turns_Remaining_Zero_Returns_True" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
+  <testcase name="playTurn_When_Empty_Spot_Wins_Game_And_Returns_True" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
+  <testcase name="checkDraw_Turns_Remaining_Zero_Returns_True" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
   <testcase name="getTurnInfo_When_Player2_Turn_And_Started_State_Return_Player_2_Turn_Message" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
   <testcase name="getTurnInfo_When_Player1_Turn_And_Draw_State_Return_Draw_Game_Message" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
-  <testcase name="checkDraw_Turns_Remaining_Greater_Then_Zero_Returns_False" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
-  <testcase name="changeTurn_When_Game_Started_Swap_Player_Turns" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="checkDraw_Turns_Remaining_Greater_Then_Zero_Returns_False" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="changeTurn_When_Game_Started_Swap_Player_Turns" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
   <testcase name="playTurn_When_Empty_Spot_Calls_Change_Turn_And_Returns_True" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
   <testcase name="checkWin_Empty_Board_Returns_False" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
   <testcase name="playTurn_When_Piece_Already_Exist_Returns_False" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
   <testcase name="checkWin_Vertical_Win_For_Col1_O" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
-  <testcase name="checkWin_Vertical_Win_For_Col1_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="checkWin_Vertical_Win_For_Col1_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
   <testcase name="checkWin_Vertical_Win_For_Col2_O" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
-  <testcase name="checkWin_Vertical_Win_For_Col2_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
-  <testcase name="checkWin_Vertical_Win_For_Col3_O" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="checkWin_Vertical_Win_For_Col2_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="checkWin_Vertical_Win_For_Col3_O" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
   <testcase name="checkWin_Vertical_Win_For_Col3_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
   <testcase name="getNextToken_When_Current_Token_Is_1_Return_Negative_1" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
-  <testcase name="checkWin_Horizontal_Win_For_Row1_O" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="checkWin_Horizontal_Win_For_Row1_O" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
   <testcase name="checkWin_Horizontal_Win_For_Row1_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
   <testcase name="checkWin_Horizontal_Win_For_Row2_O" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
-  <testcase name="checkWin_Horizontal_Win_For_Row2_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
+  <testcase name="checkWin_Horizontal_Win_For_Row2_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
   <testcase name="checkWin_Horizontal_Win_For_Row3_O" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
   <testcase name="checkWin_Horizontal_Win_For_Row3_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
-  <testcase name="getNextToken_When_Current_Token_Is_Negative_1_Return_1" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
-  <testcase name="startGame_When_Current_State_Is_End_Game_Does_A_No_Op" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="getNextToken_When_Current_Token_Is_Negative_1_Return_1" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="startGame_When_Current_State_Is_End_Game_Does_A_No_Op" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
   <testcase name="getTurnInfo_When_Player1_Turn_And_Started_State_Return_Player_1_Turn_Message" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
   <testcase name="getTokenAsCharFromBoardPosition" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
-  <testcase name="checkWin_Reverse_Diag_For_O" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
-  <testcase name="checkWin_Reverse_Diag_For_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="checkWin_Reverse_Diag_For_O" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
+  <testcase name="checkWin_Reverse_Diag_For_X" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0.001"/>
   <testcase name="checkWin_Invalid_Input_Returns_False" classname="com.jermaine.tictactoe.models.TicTacToeTest" time="0"/>
 </testsuite>

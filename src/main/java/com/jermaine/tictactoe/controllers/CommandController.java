@@ -59,7 +59,7 @@ public class CommandController implements ErrorController {
                     slackResponse = acceptManager.accept(request, gameRoomList);
                     break;
                 case "play":
-                    slackResponse = playManager.startPlay(request, token[1], token[2], gameRoomList);
+                    slackResponse = playManager.startPlay(request, token[1], gameRoomList);
                     break;
                 case "drop":
                     slackResponse = dropChallengeManager.start(request, gameRoomList);

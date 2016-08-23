@@ -15,7 +15,7 @@ public class GameRoomTest {
     GameRoom subject;
     int boardSetupWithX[][] = {{1,1,1},{1,1,1},{1,1,1}};
     int boardSetupWithO[][] = {{-1,-1,-1},{-1,-1,-1},{-1,-1,-1}};
-    int boardSetupMix[][] = {{1,-1,0},{1,-1,0},{1,-1,0}};
+    int boardSetupMix[][] = {{1,-1,4},{1,-1,7},{1,-1,10}};
     @Before
     public void setUp(){
         subject = spy(new GameRoom());
@@ -25,7 +25,7 @@ public class GameRoomTest {
 
     @Test
     public void getSlackRepresentationOfBoard(){
-        assertTrue(subject.getSlackRepresentationOfBoard().equals("```|   |   |   |\n|---+---+---|\n|   |   |   |\n|---+---+---|\n|   |   |   |```"));
+        assertTrue(subject.getSlackRepresentationOfBoard().equals("```| 1 | 2 | 3 |\n|---+---+---|\n| 4 | 5 | 6 |\n|---+---+---|\n| 7 | 8 | 9 |```"));
 
 
         subject.board = boardSetupWithX;
@@ -41,7 +41,7 @@ public class GameRoomTest {
         subject.board = boardSetupMix;
         assertTrue(subject.getTokenAsCharFromBoardPosition(0,0) == 'X');
         assertTrue(subject.getTokenAsCharFromBoardPosition(0,1) == 'O');
-        assertTrue(subject.getTokenAsCharFromBoardPosition(0,2) == ' ');
+        assertTrue(subject.getTokenAsCharFromBoardPosition(0,2) == '3');
     }
 
     @Test

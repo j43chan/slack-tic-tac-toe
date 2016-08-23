@@ -8,7 +8,7 @@ public class SlackResponse {
     protected Vector<SlackAttachment> attachments = new Vector<>();
     protected boolean hasIncludedAvailableCommand = false;
     protected boolean hasIncludedPlayCommand = false;
-    public final static String playCommand = "/ttt play [row] [col] - numbers between (1 - 3) \n";
+    public final static String playCommand = "/ttt play [slot_number] - numbers between (1 - 9) \n";
     public final static String availableCommand =  "```/ttt challenge [user_name] - issues a ttt challege \n" +
                                             "/ttt accept - accepts a ttt challeged \n" +
                                             playCommand +

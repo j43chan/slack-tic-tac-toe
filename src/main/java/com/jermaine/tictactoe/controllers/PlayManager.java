@@ -10,13 +10,13 @@ import java.util.Map;
 
 @Service
 public class PlayManager {
-    public SlackResponse startPlay(final SlackRequest slackRequest, final String inputRow, final String inputCol, Map<String,GameRoom> gameRoomList) throws InvalidSlackRequest{
-        if( slackRequest == null || slackRequest.getChannel_id() == null ){
+    public SlackResponse startPlay(final SlackRequest slackRequest, final String playSlot, Map<String,GameRoom> gameRoomList) throws InvalidSlackRequest {
+        if (slackRequest == null || slackRequest.getChannel_id() == null) {
             throw new InvalidSlackRequest("missing channel id");
         }
 
         GameRoom gameRoom = gameRoomList.get(slackRequest.getChannel_id());
-        if( gameRoom == null ){
+        if (gameRoom == null) {
             return new SlackResponse()
                     .setText("There is no game associated with this channel; please challenge someone to start a game.");
         }
@@ -40,27 +40,23 @@ public class PlayManager {
             }
 
             //make sure command is valid( i.e in the form of [row] [col] where 1 <= row <= 3 and 1 <= col <= 3
-            Integer row;
-            Integer col;
+            Integer playSlotIndex;
+            int[] rowColOutParam = {-1, -1};
 
             try {
-                row = Integer.parseInt(inputRow);
-                col = Integer.parseInt(inputCol);
-                if (row > 3 || row < 1 || col > 3 || col < 1) {
-                    throw new NumberFormatException();
+                playSlotIndex = Integer.parseInt(playSlot);
+
+                if (false == getRowCol(rowColOutParam, playSlotIndex)) {
+                    throw new InvalidSlackRequest("Invalid Slot index for play command");
                 }
-            } catch (NumberFormatException e) {
+
+            } catch (NumberFormatException | InvalidSlackRequest e) {
                 return new SlackResponse()
-                        .setText("you must specify a valid row col for play command")
+                        .setText("you must specify a valid slot for play command")
                         .includeAvailableCommands();
             }
 
-            //note: the column and rows indices passed in are NOT based 0.  I've done some play testing with non developer friends and most
-            //of them preferred base 1 as input.
-            row--;
-            col--;
-
-            if (false == gameRoom.playTurn(row, col)) {
+            if (false == gameRoom.playTurn(rowColOutParam[0], rowColOutParam[1])) {
                 return new SlackResponse().setText("there is already a piece in that spot");
             } else {
                 SlackResponse slackResponse = new SlackResponse()
@@ -78,5 +74,51 @@ public class PlayManager {
                 return slackResponse;
             }
         }
+    }
+
+    protected boolean getRowCol(int[] outParamRowCol, int position) {
+        switch(position) {
+            case 1:
+                outParamRowCol[0] = 0;
+                outParamRowCol[1] = 0;
+                break;
+            case 2:
+                outParamRowCol[0] = 0;
+                outParamRowCol[1] = 1;
+                break;
+            case 3:
+                outParamRowCol[0] = 0;
+                outParamRowCol[1] = 2;
+                break;
+            case 4:
+                outParamRowCol[0] = 1;
+                outParamRowCol[1] = 0;
+                break;
+            case 5:
+                outParamRowCol[0] = 1;
+                outParamRowCol[1] = 1;
+                break;
+            case 6:
+                outParamRowCol[0] = 1;
+                outParamRowCol[1] = 2;
+                break;
+            case 7:
+                outParamRowCol[0] = 2;
+                outParamRowCol[1] = 0;
+                break;
+            case 8:
+                outParamRowCol[0] = 2;
+                outParamRowCol[1] = 1;
+                break;
+            case 9:
+                outParamRowCol[0] = 2;
+                outParamRowCol[1] = 2;
+                break;
+        }
+
+        if( outParamRowCol[0] >= 0 && outParamRowCol[1] >= 0){
+            return true;
+        }
+        return false;
     }
 }

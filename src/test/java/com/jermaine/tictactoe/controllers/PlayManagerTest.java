@@ -40,7 +40,7 @@ public class PlayManagerTest {
     @Test
     public void startPlay_Invalid_Slack_Request_Throws_Invalid_Object_Exception(){
         try {
-            subject.startPlay(null, "0", "0", fakeGameList);
+            subject.startPlay(null, "0", fakeGameList);
             fail("exception not thrown");
         }catch (InvalidSlackRequest expectedException){
             assertTrue(expectedException.getMessage().equals("missing channel id"));
@@ -48,7 +48,7 @@ public class PlayManagerTest {
 
         try{
             when(fakeRequest.getChannel_id()).thenReturn(null);
-            subject.startPlay(fakeRequest, "0", "0", fakeGameList);
+            subject.startPlay(fakeRequest, "0", fakeGameList);
             fail("exception not thrown");
         }catch (InvalidSlackRequest expectedException){
             assertTrue(expectedException.getMessage().equals("missing channel id"));
@@ -58,7 +58,7 @@ public class PlayManagerTest {
     @Test
     public void startPlay_Game_Room_Does_Not_Exist() throws InvalidSlackRequest{
         when(fakeGameList.get(any())).thenReturn(null);
-        SlackResponse response = subject.startPlay(fakeRequest, null, null, fakeGameList);
+        SlackResponse response = subject.startPlay(fakeRequest, null, fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
         assertTrue(response.getText().equals("There is no game associated with this channel; please challenge someone to start a game."));
     }
@@ -67,7 +67,7 @@ public class PlayManagerTest {
     public void startPlay_Game_Has_Not_Started_Returns_Error() throws InvalidSlackRequest{
         when(fakeGameList.get(any())).thenReturn(fakeGameRoom);
         when(fakeGameRoom.hasGameStarted()).thenReturn(false);
-        SlackResponse response = subject.startPlay(fakeRequest, null, null, fakeGameList);
+        SlackResponse response = subject.startPlay(fakeRequest, null, fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
         assertTrue(response.getText().equals("Game has not been accepted yet."));
     }
@@ -79,7 +79,7 @@ public class PlayManagerTest {
         when(fakeGameRoom.getCurrentUserId()).thenReturn("current_user_id");
         when(fakeRequest.getUser_id()).thenReturn("another_user_id");
 
-        SlackResponse response = subject.startPlay(fakeRequest, null, null, fakeGameList);
+        SlackResponse response = subject.startPlay(fakeRequest, null, fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
         assertTrue(response.getText().equals("It is not your turn!"));
     }
@@ -91,25 +91,22 @@ public class PlayManagerTest {
         when(fakeGameRoom.getCurrentUserId()).thenReturn("same_user_id");
         when(fakeRequest.getUser_id()).thenReturn("same_user_id");
 
-        SlackResponse response = subject.startPlay(fakeRequest, null, null, fakeGameList);
+        SlackResponse response = subject.startPlay(fakeRequest, null, fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
-        assertTrue(response.getText().equals("you must specify a valid row col for play command"));
+        assertTrue(response.getText().equals("you must specify a valid slot for play command"));
 
-        response = subject.startPlay(fakeRequest, "wrong type", "1", fakeGameList);
+        response = subject.startPlay(fakeRequest, "wrong type", fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
-        assertTrue(response.getText().equals("you must specify a valid row col for play command"));
+        assertTrue(response.getText().equals("you must specify a valid slot for play command"));
 
-        response = subject.startPlay(fakeRequest, "1", "wrong type", fakeGameList);
-        assertTrue(response.getResponse_type().equals("ephemeral"));
-        assertTrue(response.getText().equals("you must specify a valid row col for play command"));
 
-        response = subject.startPlay(fakeRequest, "4", "2", fakeGameList);
+        response = subject.startPlay(fakeRequest, "10", fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
-        assertTrue(response.getText().equals("you must specify a valid row col for play command"));
+        assertTrue(response.getText().equals("you must specify a valid slot for play command"));
 
-        response = subject.startPlay(fakeRequest, "0", "2", fakeGameList);
+        response = subject.startPlay(fakeRequest, "0", fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
-        assertTrue(response.getText().equals("you must specify a valid row col for play command"));
+        assertTrue(response.getText().equals("you must specify a valid slot for play command"));
     }
 
     @Test
@@ -120,7 +117,7 @@ public class PlayManagerTest {
         when(fakeGameRoom.playTurn(anyInt(),anyInt())).thenReturn(false);
         when(fakeRequest.getUser_id()).thenReturn("same_user_id");
 
-        SlackResponse response = subject.startPlay(fakeRequest, "1", "1", fakeGameList);
+        SlackResponse response = subject.startPlay(fakeRequest, "1", fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
         assertTrue(response.getText().equals("there is already a piece in that spot"));
     }
@@ -136,11 +133,11 @@ public class PlayManagerTest {
         when(fakeGameRoom.getTurnInfo()).thenReturn("currentTurnInformation");
         when(fakeRequest.getUser_id()).thenReturn("same_user_id");
 
-        SlackResponse response = subject.startPlay(fakeRequest, "1", "1", fakeGameList);
+        SlackResponse response = subject.startPlay(fakeRequest, "1", fakeGameList);
         assertTrue(response.getResponse_type().equals("in_channel"));
         assertTrue(response.getText().equals("representation_of_board"));
         assertTrue(response.getAttachments().get(0).getText().equals("currentTurnInformation"));
-        assertTrue(response.getAttachments().get(1).getText().equals("/ttt play [row] [col] - numbers between (1 - 3) \n"));
+        assertTrue(response.getAttachments().get(1).getText().equals(SlackResponse.playCommand));
     }
 
     @Test
@@ -154,7 +151,7 @@ public class PlayManagerTest {
         when(fakeGameRoom.getTurnInfo()).thenReturn("currentTurnInformation");
         when(fakeRequest.getUser_id()).thenReturn("same_user_id");
 
-        SlackResponse response = subject.startPlay(fakeRequest, "1", "1", fakeGameList);
+        SlackResponse response = subject.startPlay(fakeRequest, "1", fakeGameList);
         verify(fakeGameList).remove(fakeRequest.getChannel_id());
         assertTrue(response.getResponse_type().equals("in_channel"));
         assertTrue(response.getText().equals("representation_of_board"));

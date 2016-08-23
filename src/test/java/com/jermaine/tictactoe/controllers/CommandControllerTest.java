@@ -110,9 +110,9 @@ public class CommandControllerTest {
         when(fakeRequest.getToken()).thenReturn("KmL99uWHnNnIj8TwAkhFqc6B");
         when(fakeRequest.getChannel_id()).thenReturn("fake_channel_id");
         when(fakeRequest.getText()).thenReturn("play 1 1");
-        when(fakePlayManager.startPlay(any(),anyString(), anyString(),any())).thenReturn(fakeResponse);
+        when(fakePlayManager.startPlay(any(), anyString(),any())).thenReturn(fakeResponse);
         SlackResponse response = subject.tictactoe(fakeRequest);
-        verify(fakePlayManager).startPlay(any(),anyString(), anyString(),any());
+        verify(fakePlayManager).startPlay(any(), anyString(),any());
         assertSame(fakeResponse, response);
     }
 

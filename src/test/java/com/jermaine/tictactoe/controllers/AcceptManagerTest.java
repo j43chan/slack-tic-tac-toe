@@ -107,7 +107,7 @@ public class AcceptManagerTest {
         assertTrue(response.getText().equals("a_representation_of_board"));
         assertTrue(response.getAttachments().size() == 2 );
         assertTrue(response.getAttachments().get(0).getText().equals("current_turn_information"));
-        assertTrue(response.getAttachments().get(1).getText().equals("/ttt play [row] [col] - numbers between (1 - 3) \n"));
+        assertTrue(response.getAttachments().get(1).getText().equals(SlackResponse.playCommand));
     }
 }
 
