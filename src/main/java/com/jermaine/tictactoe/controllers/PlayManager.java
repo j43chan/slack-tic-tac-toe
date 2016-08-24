@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Service
 public class PlayManager {
-    public SlackResponse startPlay(final SlackRequest slackRequest, final String playSlot, Map<String,GameRoom> gameRoomList) throws InvalidSlackRequest {
+    public SlackResponse startService(final SlackRequest slackRequest, final String playSlot, Map<String,GameRoom> gameRoomList) throws InvalidSlackRequest {
         if (slackRequest == null || slackRequest.getChannel_id() == null) {
             throw new InvalidSlackRequest("missing channel id");
         }
@@ -18,7 +18,7 @@ public class PlayManager {
         GameRoom gameRoom = gameRoomList.get(slackRequest.getChannel_id());
         if (gameRoom == null) {
             return new SlackResponse()
-                    .setText("There is no game associated with this channel; please challenge someone to start a game.");
+                    .setText("There is no game associated with this channel; please challenge someone to startService a game.");
         }
 
         /*
@@ -64,7 +64,7 @@ public class PlayManager {
                         .setText(gameRoom.getSlackRepresentationOfBoard())
                         .addAttachmentText(gameRoom.getTurnInfo());
 
-                //if a game has ended, remove it from the gameroom list so users can start another game in that channel.
+                //if a game has ended, remove it from the gameroom list so users can startService another game in that channel.
                 if (gameRoom.hasGameEnded()) {
                     gameRoomList.remove(slackRequest.getChannel_id());
                 } else {

@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Service
 public class DropChallengeManager {
-    public SlackResponse start(final SlackRequest slackRequest, Map<String,GameRoom> gameRoomList) throws InvalidSlackRequest{
+    public SlackResponse startService(final SlackRequest slackRequest, Map<String,GameRoom> gameRoomList) throws InvalidSlackRequest{
         if( slackRequest == null || slackRequest.getChannel_id() == null ){
             throw new InvalidSlackRequest("missing channel id");
         }
@@ -21,7 +21,7 @@ public class DropChallengeManager {
         }
 
         /*
-            NOTE: This is synchronized to prevent Concurrent accept/drop requests
+            NOTE: This is synchronized to prevent Concurrent startService/drop requests
             The Synchronization happens on object level so it will not block for requests
             with different channel ids.
          */

@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Service
 public class AcceptManager {
-    public SlackResponse accept(final SlackRequest slackRequest, final Map<String,GameRoom> gameRoomList) throws InvalidSlackRequest{
+    public SlackResponse startService(final SlackRequest slackRequest, final Map<String,GameRoom> gameRoomList) throws InvalidSlackRequest{
         if( slackRequest == null || slackRequest.getChannel_id() == null ){
             throw new InvalidSlackRequest("missing channel id");
         }
@@ -22,8 +22,8 @@ public class AcceptManager {
         }
 
         /*
-            NOTE: This is synchronized to prevent Concurrent accept/drop requests
-            EXAMPLE: Thread 1 comes in and tries to start game
+            NOTE: This is synchronized to prevent Concurrent startService/drop requests
+            EXAMPLE: Thread 1 comes in and tries to startService game
                      Thread 2 comes in and tries to drop game
                      We need to makre sure these 2 events never interleave
 
@@ -35,7 +35,7 @@ public class AcceptManager {
             if(false == gameRoomList.containsKey(slackRequest.getChannel_id())){
                 //room has been removed, possibly do to someone dropping the game concurrently
                 return new SlackResponse()
-                        .setText("Cannot accept Challenge, game has been dropped");
+                        .setText("Cannot startService Challenge, game has been dropped");
             }
 
             if (false == gameRoom.isWaitingToBeAccepted()) {

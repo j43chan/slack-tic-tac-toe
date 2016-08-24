@@ -77,9 +77,9 @@ public class CommandControllerTest {
         when(fakeRequest.getToken()).thenReturn("KmL99uWHnNnIj8TwAkhFqc6B");
         when(fakeRequest.getChannel_id()).thenReturn("fake_channel_id");
         when(fakeRequest.getText()).thenReturn("challenge fake_user");
-        when(fakeChallengeManager.startChallenge(any(),anyString(),any())).thenReturn(fakeResponse);
+        when(fakeChallengeManager.startService(any(),anyString(),any())).thenReturn(fakeResponse);
         SlackResponse response = subject.tictactoe(fakeRequest);
-        verify(fakeChallengeManager).startChallenge(any(), anyString(), any());
+        verify(fakeChallengeManager).startService(any(), anyString(), any());
         assertSame(fakeResponse, response);
     }
 
@@ -99,9 +99,9 @@ public class CommandControllerTest {
         when(fakeRequest.getToken()).thenReturn("KmL99uWHnNnIj8TwAkhFqc6B");
         when(fakeRequest.getChannel_id()).thenReturn("fake_channel_id");
         when(fakeRequest.getText()).thenReturn("accept");
-        when(fakeAcceptManager.accept(any(),any())).thenReturn(fakeResponse);
+        when(fakeAcceptManager.startService(any(),any())).thenReturn(fakeResponse);
         SlackResponse response = subject.tictactoe(fakeRequest);
-        verify(fakeAcceptManager).accept(any(), any());
+        verify(fakeAcceptManager).startService(any(), any());
         assertSame(fakeResponse, response);
     }
 
@@ -109,10 +109,10 @@ public class CommandControllerTest {
     public void tictactoe_Play_Command_Invokes_Play_Manager_And_Returns_Response() throws Exception{
         when(fakeRequest.getToken()).thenReturn("KmL99uWHnNnIj8TwAkhFqc6B");
         when(fakeRequest.getChannel_id()).thenReturn("fake_channel_id");
-        when(fakeRequest.getText()).thenReturn("play 1 1");
-        when(fakePlayManager.startPlay(any(), anyString(),any())).thenReturn(fakeResponse);
+        when(fakeRequest.getText()).thenReturn("play 1");
+        when(fakePlayManager.startService(any(), anyString(),any())).thenReturn(fakeResponse);
         SlackResponse response = subject.tictactoe(fakeRequest);
-        verify(fakePlayManager).startPlay(any(), anyString(),any());
+        verify(fakePlayManager).startService(any(), anyString(),any());
         assertSame(fakeResponse, response);
     }
 
@@ -121,9 +121,9 @@ public class CommandControllerTest {
         when(fakeRequest.getToken()).thenReturn("KmL99uWHnNnIj8TwAkhFqc6B");
         when(fakeRequest.getChannel_id()).thenReturn("fake_channel_id");
         when(fakeRequest.getText()).thenReturn("drop");
-        when(fakeDropManager.start(any(),any())).thenReturn(fakeResponse);
+        when(fakeDropManager.startService(any(),any())).thenReturn(fakeResponse);
         SlackResponse response = subject.tictactoe(fakeRequest);
-        verify(fakeDropManager).start(any(),any());
+        verify(fakeDropManager).startService(any(),any());
         assertSame(fakeResponse, response);
     }
 

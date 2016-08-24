@@ -53,16 +53,22 @@ public class CommandController implements ErrorController {
         try {
             switch (command) {
                 case "challenge":
-                    slackResponse = challengeManager.startChallenge(request, token[1], gameRoomList);
+                    if( token.length != 2 ){
+                        throw new InvalidSlackRequest("invalid command");
+                    }
+                    slackResponse = challengeManager.startService(request, token[1], gameRoomList);
                     break;
                 case "accept":
-                    slackResponse = acceptManager.accept(request, gameRoomList);
+                    slackResponse = acceptManager.startService(request, gameRoomList);
                     break;
                 case "play":
-                    slackResponse = playManager.startPlay(request, token[1], gameRoomList);
+                    if( token.length != 2 ){
+                        throw new InvalidSlackRequest("invalid command");
+                    }
+                    slackResponse = playManager.startService(request, token[1], gameRoomList);
                     break;
                 case "drop":
-                    slackResponse = dropChallengeManager.start(request, gameRoomList);
+                    slackResponse = dropChallengeManager.startService(request, gameRoomList);
                     break;
                 case "help":
                     slackResponse = new SlackResponse().includeAvailableCommands();
@@ -71,7 +77,7 @@ public class CommandController implements ErrorController {
                     throw new InvalidSlackRequest("Invalid Command");
             }
         }
-        catch (InvalidSlackRequest|ArrayIndexOutOfBoundsException e){
+        catch (InvalidSlackRequest e){
             //invalid parameters passed in, print the command list for user
             slackResponse = new SlackResponse()
                     .includeAvailableCommands()

@@ -43,7 +43,7 @@ public class AcceptManagerTest {
     @Test
     public void accept_Invalid_Slack_Request_Throws_Exception(){
         try {
-            subject.accept(null, fakeGameList);
+            subject.startService(null, fakeGameList);
             fail("did not throw exception");
         }catch (InvalidSlackRequest expectedException){
             assertTrue(expectedException.getMessage().equals("missing channel id"));
@@ -51,7 +51,7 @@ public class AcceptManagerTest {
 
         try {
             when(fakeRequest.getChannel_id()).thenReturn(null);
-            subject.accept(fakeRequest, fakeGameList);
+            subject.startService(fakeRequest, fakeGameList);
             fail("did not throw exception");
         }catch (InvalidSlackRequest expectedException){
             assertTrue(expectedException.getMessage().equals("missing channel id"));
@@ -61,7 +61,7 @@ public class AcceptManagerTest {
     @Test
     public void accept_Game_Room_Does_Not_Exist_Returns_Error() throws InvalidSlackRequest{
         when(fakeGameList.get(anyString())).thenReturn(null);
-        SlackResponse response = subject.accept( fakeRequest, fakeGameList );
+        SlackResponse response = subject.startService( fakeRequest, fakeGameList );
         assertTrue(response.getResponse_type().equals("ephemeral"));
         assertTrue(response.getText().equals("you must be challenged before accepting a request"));
     }
@@ -71,7 +71,7 @@ public class AcceptManagerTest {
         when(fakeGameList.get(anyString())).thenReturn(fakeGameRoom);
         when(fakeGameList.containsKey(anyString())).thenReturn(true);
         when(fakeGameRoom.isWaitingToBeAccepted()).thenReturn(false);
-        SlackResponse response = subject.accept(fakeRequest, fakeGameList);
+        SlackResponse response = subject.startService(fakeRequest, fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
         assertTrue(response.getText().equals("Game is not in a state to be accepted"));
     }
@@ -84,7 +84,7 @@ public class AcceptManagerTest {
         when(fakeGameRoom.getPlayer2Name()).thenReturn("another_user_name");
         when(fakeRequest.getUser_name()).thenReturn("yet_another_user_name");
 
-        SlackResponse response = subject.accept(fakeRequest, fakeGameList);
+        SlackResponse response = subject.startService(fakeRequest, fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
         assertTrue(response.getText().equals("You are not the one being challenged"));
     }
@@ -100,7 +100,7 @@ public class AcceptManagerTest {
         when(fakeRequest.getUser_name()).thenReturn("correct_user");
         when(fakeRequest.getUser_id()).thenReturn("fake_user_id");
 
-        SlackResponse response = subject.accept(fakeRequest, fakeGameList);
+        SlackResponse response = subject.startService(fakeRequest, fakeGameList);
         verify(fakeGameRoom).setPlayer2UserId(anyString());
         verify(fakeGameRoom).startGame();
         assertTrue(response.getResponse_type().equals("in_channel"));

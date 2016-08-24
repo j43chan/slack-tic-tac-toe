@@ -10,7 +10,7 @@ public class SlackResponse {
     protected boolean hasIncludedPlayCommand = false;
     public final static String playCommand = "/ttt play [slot_number] - numbers between (1 - 9) \n";
     public final static String availableCommand =  "```/ttt challenge [user_name] - issues a ttt challege \n" +
-                                            "/ttt accept - accepts a ttt challeged \n" +
+                                            "/ttt startService - accepts a ttt challeged \n" +
                                             playCommand +
                                             "/ttt drop - drops a game waiting to be accepted \n```";
 

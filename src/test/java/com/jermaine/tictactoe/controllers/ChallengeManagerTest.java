@@ -42,7 +42,7 @@ public class ChallengeManagerTest {
     @Test
     public void startChallenge_Invalid_Slack_Request_Throws_Invalid_Object_Exception(){
         try {
-            subject.startChallenge(null, "fake_user", fakeGameList);
+            subject.startService(null, "fake_user", fakeGameList);
             fail("exception not thrown");
         }catch (InvalidSlackRequest expectedException){
             assertTrue(expectedException.getMessage().equals("missing channel id"));
@@ -50,7 +50,7 @@ public class ChallengeManagerTest {
 
         try{
             when(fakeRequest.getChannel_id()).thenReturn(null);
-            subject.startChallenge(fakeRequest, "fake_user", fakeGameList);
+            subject.startService(fakeRequest, "fake_user", fakeGameList);
             fail("exception not thrown");
         }catch (InvalidSlackRequest expectedException){
             assertTrue(expectedException.getMessage().equals("missing channel id"));
@@ -60,9 +60,9 @@ public class ChallengeManagerTest {
     @Test
     public void startChallenge_When_Channel_Already_Has_Game_Room_Returns_Already_Exists() throws InvalidSlackRequest{
         when(fakeGameList.containsKey(anyString())).thenReturn(true);
-        SlackResponse response = subject.startChallenge(fakeRequest, "fake_user", fakeGameList);
+        SlackResponse response = subject.startService(fakeRequest, "fake_user", fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
-        assertTrue(response.getText().equals("Challenged already issued, or a game is in progress; please wait for the game to start, or finish game before reissuing another challenge."));
+        assertTrue(response.getText().equals("Challenged already issued, or a game is in progress; please wait for the game to startService, or finish game before reissuing another challenge."));
     }
 
     @Test
@@ -70,13 +70,13 @@ public class ChallengeManagerTest {
         when(fakeGameList.containsKey(anyString())).thenReturn(false);
         when(fakeRequest.getUser_name()).thenReturn("user_1");
         when(fakeRequest.getUser_id()).thenReturn("user_1_id");
-        SlackResponse response = subject.startChallenge(fakeRequest, "challenged_user", fakeGameList);
+        SlackResponse response = subject.startService(fakeRequest, "challenged_user", fakeGameList);
         assertTrue(fakeGameList.size() == 1);
         assertTrue(fakeGameList.get(fakeRequest.getChannel_id()).getPlayer1Name().equals("user_1"));
         assertTrue(fakeGameList.get(fakeRequest.getChannel_id()).getPlayer1UserId().equals("user_1_id"));
         assertTrue(fakeGameList.get(fakeRequest.getChannel_id()).getPlayer2Name().equals("challenged_user"));
         assertTrue(response.getResponse_type().equals("in_channel"));
-        assertTrue(response.getText().equals("user_1 has issued a ttt challenge to challenged_user\n<@challenged_user> type ```/ttt accept``` to start the game!"));
+        assertTrue(response.getText().equals("user_1 has issued a ttt challenge to challenged_user\n<@challenged_user> type ```/ttt startService``` to startService the game!"));
     }
 
     @Test

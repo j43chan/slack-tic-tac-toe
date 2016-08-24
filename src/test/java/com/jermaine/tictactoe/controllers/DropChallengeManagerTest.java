@@ -41,7 +41,7 @@ public class DropChallengeManagerTest {
     @Test
     public void start_Invalid_Slack_Request_Throws_Invalid_Object_Exception(){
         try {
-            subject.start(null, fakeGameList);
+            subject.startService(null, fakeGameList);
             fail("exception not thrown");
         }catch (InvalidSlackRequest expectedException){
             assertTrue(expectedException.getMessage().equals("missing channel id"));
@@ -49,7 +49,7 @@ public class DropChallengeManagerTest {
 
         try{
             when(fakeRequest.getChannel_id()).thenReturn(null);
-            subject.start(fakeRequest, fakeGameList);
+            subject.startService(fakeRequest, fakeGameList);
             fail("exception not thrown");
         }catch (InvalidSlackRequest expectedException){
             assertTrue(expectedException.getMessage().equals("missing channel id"));
@@ -59,7 +59,7 @@ public class DropChallengeManagerTest {
     @Test
     public void start_When_Game_Room_Does_Not_Exist_Returns_Error() throws InvalidSlackRequest{
         when(fakeGameList.get(anyString())).thenReturn(null);
-        SlackResponse response = subject.start(fakeRequest, fakeGameList);
+        SlackResponse response = subject.startService(fakeRequest, fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
         assertTrue(response.getText().equals("the current channel has no game in progress"));
     }
@@ -69,7 +69,7 @@ public class DropChallengeManagerTest {
         when(fakeGameList.get(anyString())).thenReturn(fakeGameRoom);
         when(fakeGameList.containsKey(anyString())).thenReturn(true);
         when(fakeGameRoom.isWaitingToBeAccepted()).thenReturn(false);
-        SlackResponse response = subject.start(fakeRequest, fakeGameList);
+        SlackResponse response = subject.startService(fakeRequest, fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
         assertTrue(response.getText().equals("Cannot Drop a Game that is in progress"));
     }
@@ -81,7 +81,7 @@ public class DropChallengeManagerTest {
         when(fakeGameRoom.isWaitingToBeAccepted()).thenReturn(true);
         when(fakeGameRoom.getPlayer1Name()).thenReturn("fake_name");
         when(fakeRequest.getUser_name()).thenReturn("a_different_fake_name");
-        SlackResponse response = subject.start(fakeRequest, fakeGameList);
+        SlackResponse response = subject.startService(fakeRequest, fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
         assertTrue(response.getText().equals("cannot drop a game that you didn't create"));
     }
@@ -93,7 +93,7 @@ public class DropChallengeManagerTest {
         when(fakeGameRoom.isWaitingToBeAccepted()).thenReturn(true);
         when(fakeGameRoom.getPlayer1Name()).thenReturn("same_fake_name");
         when(fakeRequest.getUser_name()).thenReturn("same_fake_name");
-        SlackResponse response = subject.start(fakeRequest, fakeGameList);
+        SlackResponse response = subject.startService(fakeRequest, fakeGameList);
         verify(fakeGameList).remove(fakeRequest.getChannel_id());
         assertTrue(response.getResponse_type().equals("in_channel"));
         assertTrue(response.getText().equals("game has been dropped"));
