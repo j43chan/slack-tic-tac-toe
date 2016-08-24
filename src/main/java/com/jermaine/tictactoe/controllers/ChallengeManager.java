@@ -45,7 +45,7 @@ public class ChallengeManager {
                         .append("<@")
                         .append(challengedUser)
                         .append("> ")
-                        .append("type ```/ttt accept``` to startService the game!");
+                        .append("type ```/ttt accept``` to start the game!");
 
         return new SlackResponse()
                 .changeResponseTypeToInChannel()
