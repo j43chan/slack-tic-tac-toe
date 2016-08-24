@@ -76,7 +76,7 @@ public class ChallengeManagerTest {
         assertTrue(fakeGameList.get(fakeRequest.getChannel_id()).getPlayer1UserId().equals("user_1_id"));
         assertTrue(fakeGameList.get(fakeRequest.getChannel_id()).getPlayer2Name().equals("challenged_user"));
         assertTrue(response.getResponse_type().equals("in_channel"));
-        assertTrue(response.getText().equals("user_1 has issued a ttt challenge to challenged_user\n<@challenged_user> type ```/ttt startService``` to startService the game!"));
+        assertTrue(response.getText().equals("user_1 has issued a ttt challenge to challenged_user\n<@challenged_user> type ```/ttt accept``` to start the game!"));
     }
 
     @Test

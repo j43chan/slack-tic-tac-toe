@@ -74,10 +74,6 @@ public class SlackResponse {
         this.attachments = attachments;
     }
 
-    public boolean isHasIncludedAvailableCommand() {
-        return hasIncludedAvailableCommand;
-    }
-
     public void setHasIncludedAvailableCommand(boolean hasIncludedAvailableCommand) {
         this.hasIncludedAvailableCommand = hasIncludedAvailableCommand;
     }
