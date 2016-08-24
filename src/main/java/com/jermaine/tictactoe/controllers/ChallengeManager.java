@@ -24,7 +24,7 @@ public class ChallengeManager {
         //check to see if a new challenge can be issued since only one game can be played per channel
         //use channel id instead of channel name incase something gets renamed.
         if( gameRoomList.containsKey(slackRequest.getChannel_id()) ){
-            return new SlackResponse().setText("Challenged already issued, or a game is in progress; please wait for the game to startService, or finish game before reissuing another challenge.");
+            return new SlackResponse().setText("Challenged already issued, or a game is in progress; please wait for the game to start, or finish game before reissuing another challenge.");
         }
 
         //create a new game of tictactoe and associate it with the requested channel.

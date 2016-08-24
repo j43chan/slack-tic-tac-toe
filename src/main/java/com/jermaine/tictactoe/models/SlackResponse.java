@@ -8,10 +8,12 @@ public class SlackResponse {
     protected Vector<SlackAttachment> attachments = new Vector<>();
     protected boolean hasIncludedAvailableCommand = false;
     protected boolean hasIncludedPlayCommand = false;
+    public final static String statusCommand = "/ttt status - shows board, and indicates turn information\n";
     public final static String playCommand = "/ttt play [slot_number] - numbers between (1 - 9) \n";
     public final static String availableCommand =  "```/ttt challenge [user_name] - issues a ttt challege \n" +
                                             "/ttt accept - accepts a ttt challeged \n" +
                                             playCommand +
+                                            statusCommand +
                                             "/ttt drop - drops a game waiting to be accepted \n```";
 
     public SlackResponse changeResponseTypeToEphemeral(){

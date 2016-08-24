@@ -18,7 +18,7 @@ public class PlayManager {
         GameRoom gameRoom = gameRoomList.get(slackRequest.getChannel_id());
         if (gameRoom == null) {
             return new SlackResponse()
-                    .setText("There is no game associated with this channel; please challenge someone to startService a game.");
+                    .setText("There is no game associated with this channel; please challenge someone to start a game.");
         }
 
         /*

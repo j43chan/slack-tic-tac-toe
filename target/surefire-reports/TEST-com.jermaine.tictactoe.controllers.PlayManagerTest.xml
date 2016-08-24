@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0.009" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0.01" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2016.2.2"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -13,7 +13,7 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="idea.launcher.port" value="7532"/>
+    <property name="idea.launcher.port" value="7539"/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
@@ -65,11 +65,11 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase name="startPlay_Invalid_Slack_Request_Throws_Invalid_Object_Exception" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0.001"/>
-  <testcase name="startPlay_Row_Col_Valid_Turn_Game_Not_Ended_Includes_Play_Command_List" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0.001"/>
+  <testcase name="startPlay_Row_Col_Valid_Turn_Game_Not_Ended_Includes_Play_Command_List" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0.002"/>
   <testcase name="startPlay_Row_Col_On_A_Area_With_Existing_Piece" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0.001"/>
   <testcase name="startPlay_Invalid_Row_Col_Returns_Error" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0.002"/>
-  <testcase name="startPlay_Game_Has_Not_Started_Returns_Error" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0"/>
-  <testcase name="startPlay_Not_Your_Turn_Returns_Error" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0"/>
-  <testcase name="startPlay_Game_Room_Does_Not_Exist" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0.001"/>
-  <testcase name="startPlay_Row_Col_Valid_Turn_Game_Ended_Remove_Game_Room" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0.001"/>
+  <testcase name="startPlay_Game_Has_Not_Started_Returns_Error" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0.001"/>
+  <testcase name="startPlay_Not_Your_Turn_Returns_Error" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0.001"/>
+  <testcase name="startPlay_Game_Room_Does_Not_Exist" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0"/>
+  <testcase name="startPlay_Row_Col_Valid_Turn_Game_Ended_Remove_Game_Room" classname="com.jermaine.tictactoe.controllers.PlayManagerTest" time="0.002"/>
 </testsuite>

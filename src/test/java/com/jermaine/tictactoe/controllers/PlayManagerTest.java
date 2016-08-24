@@ -60,7 +60,7 @@ public class PlayManagerTest {
         when(fakeGameList.get(any())).thenReturn(null);
         SlackResponse response = subject.startService(fakeRequest, null, fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
-        assertTrue(response.getText().equals("There is no game associated with this channel; please challenge someone to startService a game."));
+        assertTrue(response.getText().equals("There is no game associated with this channel; please challenge someone to start a game."));
     }
 
     @Test

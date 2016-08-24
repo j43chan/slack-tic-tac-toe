@@ -62,7 +62,7 @@ public class ChallengeManagerTest {
         when(fakeGameList.containsKey(anyString())).thenReturn(true);
         SlackResponse response = subject.startService(fakeRequest, "fake_user", fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
-        assertTrue(response.getText().equals("Challenged already issued, or a game is in progress; please wait for the game to startService, or finish game before reissuing another challenge."));
+        assertTrue(response.getText().equals("Challenged already issued, or a game is in progress; please wait for the game to start, or finish game before reissuing another challenge."));
     }
 
     @Test

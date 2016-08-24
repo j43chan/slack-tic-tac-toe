@@ -24,6 +24,9 @@ public class CommandController implements ErrorController {
     private PlayManager playManager;
 
     @Autowired
+    private StatusManager statusManager;
+
+    @Autowired
     private DropChallengeManager dropChallengeManager;
 
     @RequestMapping(value="/tictactoe")
@@ -65,6 +68,9 @@ public class CommandController implements ErrorController {
                         throw new InvalidSlackRequest("invalid command");
                     }
                     slackResponse = playManager.startService(request, token[1], gameRoomList);
+                    break;
+                case "status":
+                    slackResponse = statusManager.startService(request, gameRoomList);
                     break;
                 case "drop":
                     slackResponse = dropChallengeManager.startService(request, gameRoomList);
