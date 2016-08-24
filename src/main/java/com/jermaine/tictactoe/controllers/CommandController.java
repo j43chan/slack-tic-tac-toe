@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 public class CommandController implements ErrorController {
-    public final static String SLACK_TOKEN = "KmL99uWHnNnIj8TwAkhFqc6B";
+    public final static String SLACK_TOKEN = System.getenv("SLACK_TEAM_TOKEN");
     private final static ConcurrentHashMap<String, GameRoom> gameRoomList = new ConcurrentHashMap<>(); //mapping for channel names to games
 
     @Autowired
