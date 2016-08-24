@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a9a6a6e-cc83-4f0f-a19e-b7b5bd0926fd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/AcceptManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/AcceptManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/ChallengeManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/ChallengeManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/CommandController.java" afterPath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/CommandController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/DropChallengeManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/DropChallengeManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/PlayManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/PlayManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/AcceptManagerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/AcceptManagerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/ChallengeManagerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/ChallengeManagerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/DropChallengeManagerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/DropChallengeManagerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/PlayManagerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/PlayManagerTest.java" />
     </list>
     <ignored path="slackTicTacToe.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,11 +27,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.6634361">
       <split-first>
         <leaf>
-          <file leaf-file-name="SlackResponse.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="SlackResponse.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackResponse.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="10" column="94" selection-start-line="10" selection-start-column="94" selection-end-line="10" selection-end-column="94" />
+                <state relative-caret-position="120">
+                  <caret line="12" column="56" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
                   <folding />
                 </state>
               </provider>
@@ -104,7 +95,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CommandControllerTest.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="CommandControllerTest.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="-222">
@@ -144,8 +135,8 @@
           <file leaf-file-name="ChallengeManager.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/ChallengeManager.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-207">
-                  <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+                <state relative-caret-position="273">
+                  <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -251,19 +242,19 @@
         <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/models/SlackResponseTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/models/TicTacToeTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/DropChallengeManagerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/ChallengeManager.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/ChallengeManagerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/TicTacToe.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/AcceptManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/DropChallengeManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/PlayManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/GameRoom.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackResponse.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/AcceptManagerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/PlayManagerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/models/GameRoomTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/CommandController.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/ChallengeManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackResponse.java" />
       </list>
     </option>
   </component>
@@ -1051,7 +1042,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3121693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3121693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -1295,14 +1286,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="94" selection-start-line="10" selection-start-column="94" selection-end-line="10" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/models/SlackResponseTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1325,16 +1308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/ChallengeManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-207">
-          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1396,6 +1369,24 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/ChallengeManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="56" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
