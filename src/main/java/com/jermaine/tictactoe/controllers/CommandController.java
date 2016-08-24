@@ -12,7 +12,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 public class CommandController implements ErrorController {
-    public final static String SLACK_TOKEN = System.getenv("SLACK_TEAM_TOKEN");
     private final static ConcurrentHashMap<String, GameRoom> gameRoomList = new ConcurrentHashMap<>(); //mapping for channel names to games
 
     @Autowired
@@ -30,7 +29,7 @@ public class CommandController implements ErrorController {
     @RequestMapping(value="/tictactoe")
     public SlackResponse tictactoe(SlackRequest request){
         //check to make sure token is from registered team
-        if( request.getToken() == null || false == request.getToken().equals(SLACK_TOKEN) ){
+        if( request.getToken() == null || false == request.getToken().equals(getSlackToken()) ){
             return new SlackResponse().setText("Your slack team is not supported! Please check your token!");
         }
 
@@ -90,5 +89,9 @@ public class CommandController implements ErrorController {
     @Override
     public String getErrorPath() {
         return null;
+    }
+
+    protected String getSlackToken(){
+        return System.getenv("SLACK_TEAM_TOKEN");
     }
 }

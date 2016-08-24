@@ -13,9 +13,7 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CommandControllerTest {
@@ -29,6 +27,7 @@ public class CommandControllerTest {
     DropChallengeManager fakeDropManager;
 
     @InjectMocks
+    CommandController commandController;
     CommandController subject;
     SlackRequest fakeRequest;
     SlackResponse fakeResponse;
@@ -37,6 +36,8 @@ public class CommandControllerTest {
 
     @Before
     public void setUp(){
+        subject = spy(commandController);
+        when(subject.getSlackToken()).thenReturn("KmL99uWHnNnIj8TwAkhFqc6B");
         fakeRequest = mock(SlackRequest.class);
         fakeResponse = mock(SlackResponse.class);
     }

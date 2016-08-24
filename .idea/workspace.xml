@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4a9a6a6e-cc83-4f0f-a19e-b7b5bd0926fd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/CommandController.java" afterPath="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/CommandController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java" />
     </list>
     <ignored path="slackTicTacToe.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,11 +24,11 @@
     <favorites_list name="slackTicTacToe" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="SlackResponse.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
+            <state relative-caret-position="795">
               <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
               <folding />
             </state>
@@ -37,7 +38,7 @@
       <file leaf-file-name="AcceptManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/AcceptManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
+            <state relative-caret-position="375">
               <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -46,12 +47,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CommandController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/CommandController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-165">
-              <caret line="7" column="66" selection-start-line="7" selection-start-column="66" selection-end-line="7" selection-end-column="66" />
-              <folding />
+            <state relative-caret-position="165">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3499#3500#0" expanded="true" />
+                <element signature="e#3555#3556#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,7 +64,7 @@
       <file leaf-file-name="BeanUtils.class" pinned="false" current-in-tab="false">
         <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.2.5.RELEASE/spring-beans-4.2.5.RELEASE.jar!/org/springframework/beans/BeanUtils.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
+            <state relative-caret-position="765">
               <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
               <folding />
             </state>
@@ -79,7 +84,7 @@
       <file leaf-file-name="PlayManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/PlayManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="600">
               <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -91,7 +96,7 @@
       <file leaf-file-name="DropChallengeManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/DropChallengeManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="255">
               <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
               <folding />
             </state>
@@ -110,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandControllerTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CommandControllerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-222">
-              <caret line="113" column="50" selection-start-line="113" selection-start-column="50" selection-end-line="113" selection-end-column="50" />
+            <state relative-caret-position="360">
+              <caret line="39" column="74" selection-start-line="39" selection-start-column="74" selection-end-line="39" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,7 +130,7 @@
       <file leaf-file-name="ChallengeManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/ChallengeManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
+            <state relative-caret-position="165">
               <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -180,11 +185,11 @@
         <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/AcceptManagerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/PlayManagerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/models/GameRoomTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/ChallengeManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackResponse.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/ChallengeManagerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/CommandController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java" />
       </list>
     </option>
   </component>
@@ -196,8 +201,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="52" />
-    <option name="y" value="27" />
+    <option name="x" value="-64" />
+    <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="825" />
   </component>
@@ -226,7 +231,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -439,6 +443,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -457,33 +462,7 @@
       <recent name="$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.run server">
-    <configuration default="false" name="SlackResponseTest.includePlayCommand_When_Has_Been_Set_Text_Is_Not_Repeated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.jermaine.tictactoe.models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="slack-tic-tac-toe" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.jermaine.tictactoe.models" />
-      <option name="MAIN_CLASS_NAME" value="com.jermaine.tictactoe.models.SlackResponseTest" />
-      <option name="METHOD_NAME" value="includePlayCommand_When_Has_Been_Set_Text_Is_Not_Repeated" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Maven.Unnamed">
     <configuration default="false" name="GameRoomTest.getTokenAsCharFromBoardPosition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -575,6 +554,32 @@
       <option name="PACKAGE_NAME" value="com.jermaine.tictactoe.controllers" />
       <option name="MAIN_CLASS_NAME" value="com.jermaine.tictactoe.controllers.ChallengeManagerTest" />
       <option name="METHOD_NAME" value="startChallenge_When_Channel_Does_Not_Exist_Issue_New_Challenge" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="CommandControllerTest.tictactoe_Null_Slack_Token_Returns_Error" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.jermaine.tictactoe.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="slack-tic-tac-toe" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.jermaine.tictactoe.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.jermaine.tictactoe.controllers.CommandControllerTest" />
+      <option name="METHOD_NAME" value="tictactoe_Null_Slack_Token_Returns_Error" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -898,19 +903,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.run server" />
       <item index="1" class="java.lang.String" itemvalue="Maven.Unnamed" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.SlackResponseTest.includePlayCommand_When_Has_Been_Set_Text_Is_Not_Repeated" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.GameRoomTest.getTokenAsCharFromBoardPosition" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.CommandControllerTest.tictactoe_Accept_Command_Invokes_Accept_Manager_And_Returns_Response" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.CommandControllerTest.tictactoe_Play_Command_Invokes_Play_Manager_And_Returns_Response" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.ChallengeManagerTest.startChallenge_When_Channel_Does_Not_Exist_Issue_New_Challenge" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.GameRoomTest.getTokenAsCharFromBoardPosition" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.CommandControllerTest.tictactoe_Accept_Command_Invokes_Accept_Manager_And_Returns_Response" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.CommandControllerTest.tictactoe_Play_Command_Invokes_Play_Manager_And_Returns_Response" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.ChallengeManagerTest.startChallenge_When_Channel_Does_Not_Exist_Issue_New_Challenge" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.CommandControllerTest.tictactoe_Null_Slack_Token_Returns_Error" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ChallengeManagerTest.startChallenge_When_Channel_Does_Not_Exist_Issue_New_Challenge" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.CommandControllerTest.tictactoe_Play_Command_Invokes_Play_Manager_And_Returns_Response" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.CommandControllerTest.tictactoe_Accept_Command_Invokes_Accept_Manager_And_Returns_Response" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.GameRoomTest.getTokenAsCharFromBoardPosition" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.SlackResponseTest.includePlayCommand_When_Has_Been_Set_Text_Is_Not_Repeated" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.CommandControllerTest.tictactoe_Null_Slack_Token_Returns_Error" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ChallengeManagerTest.startChallenge_When_Channel_Does_Not_Exist_Issue_New_Challenge" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.CommandControllerTest.tictactoe_Play_Command_Invokes_Play_Manager_And_Returns_Response" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.CommandControllerTest.tictactoe_Accept_Command_Invokes_Accept_Manager_And_Returns_Response" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.GameRoomTest.getTokenAsCharFromBoardPosition" />
       </list>
     </recent_temporary>
   </component>
@@ -931,12 +936,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ChallengeManagerTest_startChallenge_When_Channel_Does_Not_Exist_Issue_New_Challenge - 2016.08.23 at 20h 05m 40s.xml">
-      <configuration name="ChallengeManagerTest.startChallenge_When_Channel_Does_Not_Exist_Issue_New_Challenge" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChallengeManagerTest_startChallenge_When_Channel_Does_Not_Exist_Issue_New_Challenge - 2016.08.23 at 20h 06m 24s.xml">
-      <configuration name="ChallengeManagerTest.startChallenge_When_Channel_Does_Not_Exist_Issue_New_Challenge" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ChallengeManagerTest_startChallenge_When_Channel_Does_Not_Exist_Issue_New_Challenge - 2016.08.23 at 20h 06m 56s.xml">
       <configuration name="ChallengeManagerTest.startChallenge_When_Channel_Does_Not_Exist_Issue_New_Challenge" configurationId="JUnit" />
     </history-entry>
@@ -955,6 +954,12 @@
     <history-entry file="CommandControllerTest_tictactoe_Accept_Command_Invokes_Accept_Manager_And_Returns_Response - 2016.08.23 at 17h 31m 48s.xml">
       <configuration name="CommandControllerTest.tictactoe_Accept_Command_Invokes_Accept_Manager_And_Returns_Response" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="CommandControllerTest_tictactoe_Null_Slack_Token_Returns_Error - 2016.08.23 at 21h 25m 03s.xml">
+      <configuration name="CommandControllerTest.tictactoe_Null_Slack_Token_Returns_Error" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CommandControllerTest_tictactoe_Null_Slack_Token_Returns_Error - 2016.08.23 at 21h 27m 03s.xml">
+      <configuration name="CommandControllerTest.tictactoe_Null_Slack_Token_Returns_Error" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="CommandControllerTest_tictactoe_Play_Command_Invokes_Play_Manager_And_Returns_Response - 2016.08.23 at 19h 17m 06s.xml">
       <configuration name="CommandControllerTest.tictactoe_Play_Command_Invokes_Play_Manager_And_Returns_Response" configurationId="JUnit" />
     </history-entry>
@@ -963,33 +968,33 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="52" y="27" width="1440" height="825" extended-state="0" />
+    <frame x="-64" y="23" width="1440" height="825" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936507" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3121693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936507" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3121693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24027778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936507" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39814815" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39814815" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936507" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1026,7 +1031,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java</url>
-          <line>98</line>
+          <line>99</line>
           <properties />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
@@ -1038,7 +1043,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/CommandController.java</url>
-          <line>32</line>
+          <line>31</line>
           <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
@@ -1052,11 +1057,104 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/AcceptManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/CommandController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3499#3500#0" expanded="true" />
+            <element signature="e#3555#3556#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.2.5.RELEASE/spring-beans-4.2.5.RELEASE.jar!/org/springframework/beans/BeanUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.2.5.RELEASE/spring-beans-4.2.5.RELEASE.jar!/org/springframework/beans/factory/support/SimpleInstantiationStrategy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/PlayManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/DropChallengeManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/PlayManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1695">
+          <caret line="113" column="50" selection-start-line="113" selection-start-column="50" selection-end-line="113" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/ChallengeManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.6.2/gson-2.6.2.jar!/com/google/gson/Gson.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-956">
           <caret line="80" column="11" selection-start-line="80" selection-start-column="11" selection-end-line="80" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1064,23 +1162,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="610" column="40" selection-start-line="610" selection-start-column="19" selection-end-line="610" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackMsgButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackMsgButton.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.2.5.RELEASE/spring-web-4.2.5.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
           <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1096,19 +1185,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/SurrenderManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/SurrenderManager.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/src.zip!/java/lang/StringBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
           <caret line="134" column="25" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1135,7 +1216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="49" column="44" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1143,7 +1223,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="37" column="35" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1236,18 +1315,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/PlayManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="600">
           <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-222">
-          <caret line="113" column="50" selection-start-line="113" selection-start-column="50" selection-end-line="113" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1256,7 +1325,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/models/SlackResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
+        <state relative-caret-position="795">
           <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
           <folding />
         </state>
@@ -1264,7 +1333,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/DropChallengeManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="255">
           <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
           <folding />
         </state>
@@ -1272,7 +1341,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/AcceptManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
+        <state relative-caret-position="375">
           <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1318,7 +1387,7 @@
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.2.5.RELEASE/spring-beans-4.2.5.RELEASE.jar!/org/springframework/beans/BeanUtils.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
+        <state relative-caret-position="765">
           <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding />
         </state>
@@ -1334,7 +1403,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/ChallengeManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
+        <state relative-caret-position="165">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1344,9 +1413,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jermaine/tictactoe/controllers/CommandController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-165">
-          <caret line="7" column="66" selection-start-line="7" selection-start-column="66" selection-end-line="7" selection-end-column="66" />
-          <folding />
+        <state relative-caret-position="165">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3499#3500#0" expanded="true" />
+            <element signature="e#3555#3556#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/jermaine/tictactoe/controllers/CommandControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="39" column="74" selection-start-line="39" selection-start-column="74" selection-end-line="39" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
