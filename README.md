@@ -12,7 +12,9 @@ commands
 # How To Play
 
 1) Issue a challenge to any user in the channel e.g `/ttt challenge jermaine`
+
 2) The person being challenged, in this case jermaine, will need to accept the challenge by typing in `/ttt accept`
+
 3) Board will now be displayed along with turn information
 
 ```
@@ -32,7 +34,9 @@ commands
 # How to run server locally
 
 1) mvn package
+
 2) java -jar target/slack-tic-tac-toe-1.0-SNAPSHOT.jar
+
 3) endpoint @ http://localhost:8080/tictactoe
 
 # Note
