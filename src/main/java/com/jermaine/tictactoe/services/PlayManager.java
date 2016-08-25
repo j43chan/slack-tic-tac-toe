@@ -1,4 +1,4 @@
-package com.jermaine.tictactoe.controllers;
+package com.jermaine.tictactoe.services;
 
 import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;

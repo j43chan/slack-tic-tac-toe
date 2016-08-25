@@ -2,6 +2,10 @@ package com.jermaine.tictactoe.controllers;
 
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
+import com.jermaine.tictactoe.services.AcceptManager;
+import com.jermaine.tictactoe.services.ChallengeManager;
+import com.jermaine.tictactoe.services.DropChallengeManager;
+import com.jermaine.tictactoe.services.PlayManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

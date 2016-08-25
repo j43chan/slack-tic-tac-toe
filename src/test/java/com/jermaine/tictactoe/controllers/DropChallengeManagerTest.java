@@ -4,6 +4,7 @@ import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.GameRoom;
+import com.jermaine.tictactoe.services.DropChallengeManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
