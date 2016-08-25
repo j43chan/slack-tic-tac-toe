@@ -14,7 +14,7 @@ public class GameRoom {
     private final static Random random = new Random();
     private final int BOARD_SIZE = 3;
     protected int turnsRemaining = 9; //when this reaches 0, the match is a draw
-    protected volatile GAME_STATE gameState = GAME_STATE.CREATED;
+    protected volatile GAME_STATE gameState = GAME_STATE.CREATED; //volatile game state to ensure threads gets the most up to date game state.
     private int[] colCount = {0,0,0};
     private int[] rowCount = {0,0,0};
     private int diagCount = 0;
@@ -123,6 +123,7 @@ public class GameRoom {
     }
 
     public boolean playTurn( int row, int col ){
+        //check to see if there is an existing piece
         if( board[row][col] == 1 || board[row][col] == -1){
             return false;
         }
