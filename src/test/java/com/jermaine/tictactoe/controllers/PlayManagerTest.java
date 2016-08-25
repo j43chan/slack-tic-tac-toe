@@ -58,41 +58,7 @@ public class PlayManagerTest {
     }
 
     @Test
-    public void startPlay_Game_Room_Does_Not_Exist() throws InvalidSlackRequest{
-        when(fakeGameList.get(any())).thenReturn(null);
-        SlackResponse response = subject.startService(fakeRequest, null, fakeGameList);
-        assertTrue(response.getResponse_type().equals("ephemeral"));
-        assertTrue(response.getText().equals("There is no game associated with this channel; please challenge someone to start a game."));
-    }
-
-    @Test
-    public void startPlay_Game_Has_Not_Started_Returns_Error() throws InvalidSlackRequest{
-        when(fakeGameList.get(any())).thenReturn(fakeGameRoom);
-        when(fakeGameRoom.hasGameStarted()).thenReturn(false);
-        SlackResponse response = subject.startService(fakeRequest, null, fakeGameList);
-        assertTrue(response.getResponse_type().equals("ephemeral"));
-        assertTrue(response.getText().equals("Game has not been accepted yet."));
-    }
-
-    @Test
-    public void startPlay_Not_Your_Turn_Returns_Error() throws InvalidSlackRequest{
-        when(fakeGameList.get(any())).thenReturn(fakeGameRoom);
-        when(fakeGameRoom.hasGameStarted()).thenReturn(true);
-        when(fakeGameRoom.getCurrentUserId()).thenReturn("current_user_id");
-        when(fakeRequest.getUser_id()).thenReturn("another_user_id");
-
-        SlackResponse response = subject.startService(fakeRequest, null, fakeGameList);
-        assertTrue(response.getResponse_type().equals("ephemeral"));
-        assertTrue(response.getText().equals("It is not your turn!"));
-    }
-
-    @Test
     public void startPlay_Invalid_Row_Col_Returns_Error() throws InvalidSlackRequest{
-        when(fakeGameList.get(any())).thenReturn(fakeGameRoom);
-        when(fakeGameRoom.hasGameStarted()).thenReturn(true);
-        when(fakeGameRoom.getCurrentUserId()).thenReturn("same_user_id");
-        when(fakeRequest.getUser_id()).thenReturn("same_user_id");
-
         SlackResponse response = subject.startService(fakeRequest, null, fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
         assertTrue(response.getText().equals("you must specify a valid slot for play command"));
@@ -109,6 +75,35 @@ public class PlayManagerTest {
         response = subject.startService(fakeRequest, "0", fakeGameList);
         assertTrue(response.getResponse_type().equals("ephemeral"));
         assertTrue(response.getText().equals("you must specify a valid slot for play command"));
+    }
+
+    @Test
+    public void startPlay_Game_Room_Does_Not_Exist() throws InvalidSlackRequest{
+        when(fakeGameList.get(any())).thenReturn(null);
+        SlackResponse response = subject.startService(fakeRequest, "9", fakeGameList);
+        assertTrue(response.getResponse_type().equals("ephemeral"));
+        assertTrue(response.getText().equals("There is no game associated with this channel; please challenge someone to start a game."));
+    }
+
+    @Test
+    public void startPlay_Game_Has_Not_Started_Returns_Error() throws InvalidSlackRequest{
+        when(fakeGameList.get(any())).thenReturn(fakeGameRoom);
+        when(fakeGameRoom.hasGameStarted()).thenReturn(false);
+        SlackResponse response = subject.startService(fakeRequest, "3", fakeGameList);
+        assertTrue(response.getResponse_type().equals("ephemeral"));
+        assertTrue(response.getText().equals("Game has not been accepted yet."));
+    }
+
+    @Test
+    public void startPlay_Not_Your_Turn_Returns_Error() throws InvalidSlackRequest{
+        when(fakeGameList.get(any())).thenReturn(fakeGameRoom);
+        when(fakeGameRoom.hasGameStarted()).thenReturn(true);
+        when(fakeGameRoom.getCurrentUserId()).thenReturn("current_user_id");
+        when(fakeRequest.getUser_id()).thenReturn("another_user_id");
+
+        SlackResponse response = subject.startService(fakeRequest, "1", fakeGameList);
+        assertTrue(response.getResponse_type().equals("ephemeral"));
+        assertTrue(response.getText().equals("It is not your turn!"));
     }
 
     @Test
@@ -173,6 +168,7 @@ public class PlayManagerTest {
         when(fakeGameRoom.hasGameEnded()).thenReturn(true);
         when(fakeGameRoom.getTurnInfo()).thenReturn("currentTurnInformation");
         when(fakeGameRoom.isGameInWinState()).thenReturn(false);
+        when(fakeGameRoom.isGameInDrawState()).thenReturn(true);
         when(fakeRequest.getUser_id()).thenReturn("same_user_id");
 
         SlackResponse response = subject.startService(fakeRequest, "1", fakeGameList);

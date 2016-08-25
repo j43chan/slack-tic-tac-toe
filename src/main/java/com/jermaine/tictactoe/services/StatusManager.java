@@ -22,7 +22,7 @@ public class StatusManager {
         }
 
         /**
-         * prevent game state from interleaving.
+         * prevent game state from interweaving.
          */
         synchronized (gameRoom) {
             if (false == gameRoom.hasGameStarted()) {

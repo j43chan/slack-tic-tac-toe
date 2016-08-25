@@ -24,9 +24,9 @@ public class AcceptManager {
 
         /*
             NOTE: This is synchronized to prevent Concurrent startService/drop requests
-            EXAMPLE: Thread 1 comes in and tries to startService game
+            EXAMPLE: Thread 1 comes in and tries to accept the game
                      Thread 2 comes in and tries to drop game
-                     We need to makre sure these 2 events never interleave
+                     We need to make sure these 2 events never interweave
 
             The Synchronization happens on object level so it will not block for requests
             with different channel ids.
@@ -36,7 +36,7 @@ public class AcceptManager {
             if(false == gameRoomList.containsKey(slackRequest.getChannel_id())){
                 //room has been removed, possibly do to someone dropping the game concurrently
                 return new SlackResponse()
-                        .setText("Cannot startService Challenge, game has been dropped");
+                        .setText("Cannot accept Challenge, game has been dropped");
             }
 
             if (false == gameRoom.isWaitingToBeAccepted()) {

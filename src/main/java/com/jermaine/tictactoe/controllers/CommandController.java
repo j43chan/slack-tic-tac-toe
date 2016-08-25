@@ -95,7 +95,7 @@ public class CommandController implements ErrorController {
 
     @Override
     public String getErrorPath() {
-        return null;
+        return "invalid endpoint";
     }
 
     protected String getSlackToken(){

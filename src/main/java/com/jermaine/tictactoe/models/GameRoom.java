@@ -237,6 +237,8 @@ public class GameRoom {
 
     public boolean isGameInWinState() { return gameState == GAME_STATE.WIN;}
 
+    public boolean isGameInDrawState() { return gameState == GAME_STATE.DRAW;}
+
     public boolean hasGameStarted(){
         return gameState == GAME_STATE.STARTED;
     }

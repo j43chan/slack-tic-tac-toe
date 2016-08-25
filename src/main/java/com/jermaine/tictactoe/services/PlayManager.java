@@ -5,6 +5,8 @@ import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.GameRoom;
 import com.jermaine.tictactoe.utils.GifStrings;
+
+import javafx.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -14,6 +16,12 @@ public class PlayManager {
     public SlackResponse startService(final SlackRequest slackRequest, final String playSlot, Map<String,GameRoom> gameRoomList) throws InvalidSlackRequest {
         if (slackRequest == null || slackRequest.getChannel_id() == null) {
             throw new InvalidSlackRequest("missing channel id");
+        }
+
+        Pair<Integer,Integer> playLocation = getRowColFromPlaySlot(playSlot);
+        if(playLocation == null){
+            return new SlackResponse()
+                    .setText("you must specify a valid slot for play command");
         }
 
         GameRoom gameRoom = gameRoomList.get(slackRequest.getChannel_id());
@@ -40,39 +48,14 @@ public class PlayManager {
                 return new SlackResponse().setText("It is not your turn!");
             }
 
-            //make sure command is valid( i.e in the form of [row] [col] where 1 <= row <= 3 and 1 <= col <= 3
-            Integer playSlotIndex;
-            int[] rowColOutParam = {-1, -1};
-
-            try {
-                playSlotIndex = Integer.parseInt(playSlot);
-
-                if (false == getRowCol(rowColOutParam, playSlotIndex)) {
-                    throw new InvalidSlackRequest("Invalid Slot index for play command");
-                }
-
-            } catch (NumberFormatException | InvalidSlackRequest e) {
-                return new SlackResponse()
-                        .setText("you must specify a valid slot for play command")
-                        .includeAvailableCommands();
-            }
-
-            if (false == gameRoom.playTurn(rowColOutParam[0], rowColOutParam[1])) {
+            if (false == gameRoom.playTurn(playLocation.getKey(), playLocation.getValue())) {
                 return new SlackResponse().setText("there is already a piece in that spot");
             } else {
-                SlackResponse slackResponse = new SlackResponse()
-                        .changeResponseTypeToInChannel()
-                        .setText(gameRoom.getSlackRepresentationOfBoard())
-                        .addAttachmentText(gameRoom.getTurnInfo());
+                SlackResponse slackResponse = generateSlackResponse(gameRoom);
 
                 //if a game has ended, remove it from the gameroom list so users can startService another game in that channel.
                 if (gameRoom.hasGameEnded()) {
                     gameRoomList.remove(slackRequest.getChannel_id());
-                    slackResponse.addAttachment(null,
-                            null,
-                            gameRoom.isGameInWinState() ? GifStrings.WIN : GifStrings.DRAW);
-                } else {
-                    slackResponse.includePlayCommand();
                 }
 
                 return slackResponse;
@@ -80,49 +63,52 @@ public class PlayManager {
         }
     }
 
-    protected boolean getRowCol(int[] outParamRowCol, int position) {
-        switch(position) {
-            case 1:
-                outParamRowCol[0] = 0;
-                outParamRowCol[1] = 0;
-                break;
-            case 2:
-                outParamRowCol[0] = 0;
-                outParamRowCol[1] = 1;
-                break;
-            case 3:
-                outParamRowCol[0] = 0;
-                outParamRowCol[1] = 2;
-                break;
-            case 4:
-                outParamRowCol[0] = 1;
-                outParamRowCol[1] = 0;
-                break;
-            case 5:
-                outParamRowCol[0] = 1;
-                outParamRowCol[1] = 1;
-                break;
-            case 6:
-                outParamRowCol[0] = 1;
-                outParamRowCol[1] = 2;
-                break;
-            case 7:
-                outParamRowCol[0] = 2;
-                outParamRowCol[1] = 0;
-                break;
-            case 8:
-                outParamRowCol[0] = 2;
-                outParamRowCol[1] = 1;
-                break;
-            case 9:
-                outParamRowCol[0] = 2;
-                outParamRowCol[1] = 2;
-                break;
-        }
+    protected SlackResponse generateSlackResponse(GameRoom gameRoom){
+        SlackResponse slackResponse = new SlackResponse()
+                .changeResponseTypeToInChannel()
+                .setText(gameRoom.getSlackRepresentationOfBoard())
+                .addAttachmentText(gameRoom.getTurnInfo());
 
-        if( outParamRowCol[0] >= 0 && outParamRowCol[1] >= 0){
-            return true;
+        if( gameRoom.isGameInWinState() ){
+            slackResponse.addAttachment(null, null, GifStrings.WIN );
         }
-        return false;
+        else if( gameRoom.isGameInDrawState() ){
+            slackResponse.addAttachment(null, null, GifStrings.DRAW );
+        }else{
+            slackResponse.includePlayCommand();
+        }
+        return slackResponse;
+    }
+
+    protected Pair<Integer,Integer> getRowColFromPlaySlot(final String playSlot){
+        Integer playSlotIndex;
+        try {
+            playSlotIndex = Integer.parseInt(playSlot);
+
+            switch(playSlotIndex) {
+                case 1:
+                    return new Pair<>(0,0);
+                case 2:
+                    return new Pair<>(0,1);
+                case 3:
+                    return new Pair<>(0,2);
+                case 4:
+                    return new Pair<>(1,0);
+                case 5:
+                    return new Pair<>(1,1);
+                case 6:
+                    return new Pair<>(1,2);
+                case 7:
+                    return new Pair<>(2,0);
+                case 8:
+                    return new Pair<>(2,1);
+                case 9:
+                    return new Pair<>(2,2);
+                default:
+                    return null;
+            }
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 }
