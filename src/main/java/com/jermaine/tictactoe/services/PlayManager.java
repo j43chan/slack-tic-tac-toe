@@ -51,7 +51,7 @@ public class PlayManager {
             if (false == gameRoom.playTurn(playLocation.getKey(), playLocation.getValue())) {
                 return new SlackResponse().setText("there is already a piece in that spot");
             } else {
-                SlackResponse slackResponse = generateSlackResponse(gameRoom);
+                SlackResponse slackResponse = generateEndgameSlackResponse(gameRoom);
 
                 //if a game has ended, remove it from the gameroom list so users can startService another game in that channel.
                 if (gameRoom.hasGameEnded()) {
@@ -63,7 +63,7 @@ public class PlayManager {
         }
     }
 
-    protected SlackResponse generateSlackResponse(GameRoom gameRoom){
+    protected SlackResponse generateEndgameSlackResponse(GameRoom gameRoom){
         SlackResponse slackResponse = new SlackResponse()
                 .changeResponseTypeToInChannel()
                 .setText(gameRoom.getSlackRepresentationOfBoard())

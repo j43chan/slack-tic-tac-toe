@@ -39,9 +39,9 @@ public class GameRoomTest {
     @Test
     public void getTokenAsCharFromBoardPosition(){
         subject.board = boardSetupMix;
-        assertTrue(subject.getTokenAsCharFromBoardPosition(0,0) == 'X');
-        assertTrue(subject.getTokenAsCharFromBoardPosition(0,1) == 'O');
-        assertTrue(subject.getTokenAsCharFromBoardPosition(0,2) == '3');
+        assertTrue(subject.getTokenAsCharFromBoardPosition(0,0,1) == 'X');
+        assertTrue(subject.getTokenAsCharFromBoardPosition(0,1,2) == 'O');
+        assertTrue(subject.getTokenAsCharFromBoardPosition(0,2,3) == '3');
     }
 
     @Test

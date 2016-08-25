@@ -3,20 +3,20 @@ package com.jermaine.tictactoe.models;
 import java.util.Random;
 
 public class GameRoom {
-    protected int board[][] = {{2,3,4},{5,6,7},{8,9,10}};
+    protected int board[][] = {{0,0,0},{0,0,0},{0,0,0}};
     protected String player1Name;
     protected String player2Name;
     private String player1UserId;
     private String player2UserId;
     private String currentUserId;
-    protected int currentToken = -1; // -1 for 0, 1 for X
+    protected int currentToken = -1; // -1 for O, 1 for X
     protected int currentPlayerTurn = -1; // 1 for player1, 2 for player 2
     private final static Random random = new Random();
     private final int BOARD_SIZE = 3;
     protected int turnsRemaining = 9; //when this reaches 0, the match is a draw
     protected volatile GAME_STATE gameState = GAME_STATE.CREATED;
-    private int[] colCount = { 0, 0, 0};
-    private int[] rowCount = {0, 0, 0};
+    private int[] colCount = {0,0,0};
+    private int[] rowCount = {0,0,0};
     private int diagCount = 0;
     private int reverseDiagCount = 0;
 
@@ -33,39 +33,38 @@ public class GameRoom {
     }
 
     public String getSlackRepresentationOfBoard() {
+        String boardBorders[] = {"```| ",
+                " | ",
+                " | ",
+                " |\n|---+---+---|\n| ",
+                " | ",
+                " | ",
+                " |\n|---+---+---|\n| ",
+                " | ",
+                " | ",
+                " |```"};
+        int boardBordersIndex = 0;
         StringBuilder boardString = new StringBuilder();
-        boardString.append("```| ");
-        boardString.append(getTokenAsCharFromBoardPosition(0,0));
-        boardString.append(" | ");
-        boardString.append(getTokenAsCharFromBoardPosition(0,1));
-        boardString.append(" | ");
-        boardString.append(getTokenAsCharFromBoardPosition(0,2));
-        boardString.append(" |\n|---+---+---|\n| ");
-        boardString.append(getTokenAsCharFromBoardPosition(1,0));
-        boardString.append(" | ");
-        boardString.append(getTokenAsCharFromBoardPosition(1,1));
-        boardString.append(" | ");
-        boardString.append(getTokenAsCharFromBoardPosition(1,2));
-        boardString.append(" |\n|---+---+---|\n| ");
-        boardString.append(getTokenAsCharFromBoardPosition(2,0));
-        boardString.append(" | ");
-        boardString.append(getTokenAsCharFromBoardPosition(2,1));
-        boardString.append(" | ");
-        boardString.append(getTokenAsCharFromBoardPosition(2,2));
-        boardString.append(" |```");
+        for(int row = 0; row < BOARD_SIZE; row ++ ){
+            for(int col = 0; col <BOARD_SIZE; col ++ ){
+                boardString.append( boardBorders[boardBordersIndex] );
+                boardString.append( getTokenAsCharFromBoardPosition(row, col, boardBordersIndex+1));
+                boardBordersIndex++;
+            }
+        }
+        boardString.append( boardBorders[boardBordersIndex] );
         return boardString.toString();
     }
 
-    char getTokenAsCharFromBoardPosition(int row, int col){
+    //when row and col doesn't have a piece, returns the specified board section i.e ( 1 - 9)
+    char getTokenAsCharFromBoardPosition(int row, int col, int boardSection){
         int token = board[row][col];
         if( token == -1){
             return 'O';
         }else if( token == 1 ){
             return 'X';
         }else{
-            //1 already represents X,
-            //so we shift all starting indices up by 1
-            return String.valueOf(token-1).charAt(0);
+            return String.valueOf(boardSection).charAt(0);
         }
     }
 
@@ -128,7 +127,8 @@ public class GameRoom {
             return false;
         }
 
-        turnsRemaining --; //when this reaches 0, it is a draw game
+        //when this reaches 0, it is a draw game
+        turnsRemaining --;
 
         //flips the token either from X -> O or O -> X
         int token = getNextToken();
