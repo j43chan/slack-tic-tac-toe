@@ -5,10 +5,9 @@ import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.GameRoom;
 import com.jermaine.tictactoe.utils.GifStrings;
-
-import javafx.util.Pair;
 import org.springframework.stereotype.Service;
 
+import java.util.AbstractMap;
 import java.util.Map;
 
 @Service
@@ -18,7 +17,7 @@ public class PlayManager {
             throw new InvalidSlackRequest("missing channel id");
         }
 
-        Pair<Integer,Integer> playLocation = getRowColFromPlaySlot(playSlot);
+        AbstractMap.SimpleEntry<Integer,Integer> playLocation = getRowColFromPlaySlot(playSlot);
         if(playLocation == null){
             return new SlackResponse()
                     .setText("you must specify a valid slot for play command");
@@ -80,30 +79,30 @@ public class PlayManager {
         return slackResponse;
     }
 
-    protected Pair<Integer,Integer> getRowColFromPlaySlot(final String playSlot){
+    protected AbstractMap.SimpleEntry<Integer,Integer> getRowColFromPlaySlot(final String playSlot){
         Integer playSlotIndex;
         try {
             playSlotIndex = Integer.parseInt(playSlot);
 
             switch(playSlotIndex) {
                 case 1:
-                    return new Pair<>(0,0);
+                    return new AbstractMap.SimpleEntry<>(0,0);
                 case 2:
-                    return new Pair<>(0,1);
+                    return new AbstractMap.SimpleEntry<>(0,1);
                 case 3:
-                    return new Pair<>(0,2);
+                    return new AbstractMap.SimpleEntry<>(0,2);
                 case 4:
-                    return new Pair<>(1,0);
+                    return new AbstractMap.SimpleEntry<>(1,0);
                 case 5:
-                    return new Pair<>(1,1);
+                    return new AbstractMap.SimpleEntry<>(1,1);
                 case 6:
-                    return new Pair<>(1,2);
+                    return new AbstractMap.SimpleEntry<>(1,2);
                 case 7:
-                    return new Pair<>(2,0);
+                    return new AbstractMap.SimpleEntry<>(2,0);
                 case 8:
-                    return new Pair<>(2,1);
+                    return new AbstractMap.SimpleEntry<>(2,1);
                 case 9:
-                    return new Pair<>(2,2);
+                    return new AbstractMap.SimpleEntry<>(2,2);
                 default:
                     return null;
             }
