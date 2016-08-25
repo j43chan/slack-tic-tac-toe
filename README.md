@@ -30,6 +30,7 @@ commands
 5) The game continues until the game is a draw or someone wins.
 
 # How to run server locally
+
 1) mvn package
 2) java -jar target/slack-tic-tac-toe-1.0-SNAPSHOT.jar
 3) endpoint @ http://localhost:8080/tictactoe
