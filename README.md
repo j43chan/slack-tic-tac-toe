@@ -33,11 +33,13 @@ commands
 
 # How to run server locally
 
-1) mvn package
+1) SET Environment variable `SLACK_TEAM_TOKEN=your_team_token`
 
-2) java -jar target/slack-tic-tac-toe-1.0-SNAPSHOT.jar
+2) mvn package
 
-3) endpoint @ http://localhost:8080/tictactoe
+3) java -jar target/slack-tic-tac-toe-1.0-SNAPSHOT.jar
+
+4) endpoint @ http://localhost:8080/tictactoe
 
 # Note
 ```
