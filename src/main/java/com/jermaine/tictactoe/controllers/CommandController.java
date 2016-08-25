@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.ConcurrentHashMap;
 
+/*
+*  Main Controller for accepting slack /ttt commands
+*/
 @RestController
 public class CommandController implements ErrorController {
     private final static ConcurrentHashMap<String, GameRoom> gameRoomList = new ConcurrentHashMap<>(); //mapping for channel names to games

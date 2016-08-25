@@ -3,6 +3,7 @@ package com.jermaine.tictactoe.models;
 import java.util.Random;
 
 public class GameRoom {
+    //a 2d array representing the board state of the game.  values can be -1 for O, 0 for empty, 1 for X
     protected int board[][] = {{0,0,0},{0,0,0},{0,0,0}};
     protected String player1Name;
     protected String player2Name;
@@ -12,9 +13,12 @@ public class GameRoom {
     protected int currentToken = -1; // -1 for O, 1 for X
     protected int currentPlayerTurn = -1; // 1 for player1, 2 for player 2
     private final static Random random = new Random();
-    private final int BOARD_SIZE = 3;
+    private static final int BOARD_SIZE = 3;
     protected int turnsRemaining = 9; //when this reaches 0, the match is a draw
     protected volatile GAME_STATE gameState = GAME_STATE.CREATED; //volatile game state to ensure threads gets the most up to date game state.
+
+
+    //the following values are used to keep track of game wins
     private int[] colCount = {0,0,0};
     private int[] rowCount = {0,0,0};
     private int diagCount = 0;
@@ -32,6 +36,9 @@ public class GameRoom {
         return getSlackRepresentationOfBoard();
     }
 
+    /*
+    *  Takes the board and prints out a slack board from the user
+    */
     public String getSlackRepresentationOfBoard() {
         String boardBorders[] = {"```| ",
                 " | ",
@@ -68,6 +75,10 @@ public class GameRoom {
         }
     }
 
+    /*
+        gets the string used for turn informations
+        @Return - specifies win, draw, or whose turn it is to play
+    */
     public String getTurnInfo(){
         if(gameState == GAME_STATE.CREATED){
             return "Game has not been started!";
@@ -113,6 +124,9 @@ public class GameRoom {
         this.player2Name = player2Name;
     }
 
+    /*
+        flips the current token, X will always be assigned to first player
+    */
     protected int getNextToken(){
         if( currentToken == 1){
             currentToken = -1;
@@ -122,6 +136,14 @@ public class GameRoom {
         return currentToken;
     }
 
+    /*
+        @Param
+            row - base 0 index for board
+            col - base 0 index for board
+        @Return
+            true - a piece was successfully put on the board
+            false - unsuccessfully put on board due to existing piece
+    */
     public boolean playTurn( int row, int col ){
         //check to see if there is an existing piece
         if( board[row][col] == 1 || board[row][col] == -1){
@@ -151,6 +173,15 @@ public class GameRoom {
         return turnsRemaining == 0;
     }
 
+    /*
+        @Param
+            row - base 0 index of board
+            col - base 0 index of board
+            token - current token being played
+        @return
+            true - win
+            false - not win
+    */
     protected boolean checkWin(int row, int col, int token){
         if( row < 0
                 || row >= BOARD_SIZE
