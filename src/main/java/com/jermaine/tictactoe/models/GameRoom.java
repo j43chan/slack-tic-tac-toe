@@ -128,8 +128,9 @@ public class GameRoom {
             return false;
         }
 
-        turnsRemaining --;
+        turnsRemaining --; //when this reaches 0, it is a draw game
 
+        //flips the token either from X -> O or O -> X
         int token = getNextToken();
         board[row][col] = token;
 
@@ -233,6 +234,8 @@ public class GameRoom {
     public String getCurrentUserId() {
         return currentUserId;
     }
+
+    public boolean isGameInWinState() { return gameState == GAME_STATE.WIN;}
 
     public boolean hasGameStarted(){
         return gameState == GAME_STATE.STARTED;

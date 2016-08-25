@@ -55,8 +55,8 @@ public class SlackResponseTest {
     }
 
     @Test
-    public void addAttachmentText(){
-        subject.addAttachmentText("pretext","text");
+    public void addAttachment(){
+        subject.addAttachment("pretext","text", null);
         assertTrue(subject.getAttachments().size() == 1);
         assertTrue(subject.getAttachments().get(0).getPretext().equals("pretext"));
         assertTrue(subject.getAttachments().get(0).getText().equals("text"));

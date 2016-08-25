@@ -4,6 +4,7 @@ import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.GameRoom;
+import com.jermaine.tictactoe.utils.GifStrings;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -106,8 +107,9 @@ public class AcceptManagerTest {
         assertTrue(response.getResponse_type().equals("in_channel"));
         assertTrue(response.getText().equals("a_representation_of_board"));
         assertTrue(response.getAttachments().size() == 2 );
-        assertTrue(response.getAttachments().get(0).getText().equals("current_turn_information"));
-        assertTrue(response.getAttachments().get(1).getText().equals(SlackResponse.playCommand));
+        assertTrue(response.getAttachments().get(0).getText().equals(SlackResponse.playCommand));
+        assertTrue(response.getAttachments().get(1).getText().equals("current_turn_information"));
+        assertTrue(response.getAttachments().get(1).getImage_url().equals(GifStrings.CHALLENGE_ACCEPTED));
     }
 }
 

@@ -4,6 +4,7 @@ import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.GameRoom;
+import com.jermaine.tictactoe.utils.GifStrings;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -141,7 +142,7 @@ public class PlayManagerTest {
     }
 
     @Test
-    public void startPlay_Row_Col_Valid_Turn_Game_Ended_Remove_Game_Room() throws InvalidSlackRequest{
+    public void startPlay_Row_Col_Valid_Turn_Game_Win_Remove_Game_Room() throws InvalidSlackRequest{
         when(fakeGameList.get(any())).thenReturn(fakeGameRoom);
         when(fakeGameRoom.hasGameStarted()).thenReturn(true);
         when(fakeGameRoom.getCurrentUserId()).thenReturn("same_user_id");
@@ -149,13 +150,37 @@ public class PlayManagerTest {
         when(fakeGameRoom.getSlackRepresentationOfBoard()).thenReturn("representation_of_board");
         when(fakeGameRoom.hasGameEnded()).thenReturn(true);
         when(fakeGameRoom.getTurnInfo()).thenReturn("currentTurnInformation");
+        when(fakeGameRoom.isGameInWinState()).thenReturn(true);
         when(fakeRequest.getUser_id()).thenReturn("same_user_id");
 
         SlackResponse response = subject.startService(fakeRequest, "1", fakeGameList);
         verify(fakeGameList).remove(fakeRequest.getChannel_id());
         assertTrue(response.getResponse_type().equals("in_channel"));
         assertTrue(response.getText().equals("representation_of_board"));
+        assertTrue(response.getAttachments().size() == 2 );
         assertTrue(response.getAttachments().get(0).getText().equals("currentTurnInformation"));
+        assertTrue(response.getAttachments().get(1).getImage_url().equals(GifStrings.WIN));
+    }
+
+    @Test
+    public void startPlay_Row_Col_Valid_Turn_Game_Draw_Remove_Game_Room() throws InvalidSlackRequest{
+        when(fakeGameList.get(any())).thenReturn(fakeGameRoom);
+        when(fakeGameRoom.hasGameStarted()).thenReturn(true);
+        when(fakeGameRoom.getCurrentUserId()).thenReturn("same_user_id");
+        when(fakeGameRoom.playTurn(anyInt(),anyInt())).thenReturn(true);
+        when(fakeGameRoom.getSlackRepresentationOfBoard()).thenReturn("representation_of_board");
+        when(fakeGameRoom.hasGameEnded()).thenReturn(true);
+        when(fakeGameRoom.getTurnInfo()).thenReturn("currentTurnInformation");
+        when(fakeGameRoom.isGameInWinState()).thenReturn(false);
+        when(fakeRequest.getUser_id()).thenReturn("same_user_id");
+
+        SlackResponse response = subject.startService(fakeRequest, "1", fakeGameList);
+        verify(fakeGameList).remove(fakeRequest.getChannel_id());
+        assertTrue(response.getResponse_type().equals("in_channel"));
+        assertTrue(response.getText().equals("representation_of_board"));
+        assertTrue(response.getAttachments().size() == 2 );
+        assertTrue(response.getAttachments().get(0).getText().equals("currentTurnInformation"));
+        assertTrue(response.getAttachments().get(1).getImage_url().equals(GifStrings.DRAW));
     }
 
 }

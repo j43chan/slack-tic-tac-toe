@@ -8,7 +8,7 @@ public class SlackResponse {
     protected Vector<SlackAttachment> attachments = new Vector<>();
     protected boolean hasIncludedAvailableCommand = false;
     protected boolean hasIncludedPlayCommand = false;
-    public final static String statusCommand = "/ttt status - shows board, and indicates turn information\n";
+    public final static String statusCommand = "/ttt status - shows board, and indicates turn information \n";
     public final static String playCommand = "/ttt play [slot_number] - numbers between (1 - 9) \n";
     public final static String availableCommand =  "```/ttt challenge [user_name] - issues a ttt challege \n" +
                                             "/ttt accept - accepts a ttt challeged \n" +
@@ -40,16 +40,19 @@ public class SlackResponse {
         return addAttachmentText( availableCommand );
     }
 
-    public SlackResponse addAttachmentText(final String attachmentText){
-        return addAttachmentText(null, attachmentText);
-    }
-    public SlackResponse addAttachmentText(final String preText, final String attachmentText){
+    public SlackResponse addAttachment(final String preText, final String attachmentText, final String imageUrl){
         SlackAttachment newAttachment = new SlackAttachment();
         newAttachment.setPretext(preText);
         newAttachment.setText(attachmentText);
+        newAttachment.setImage_url(imageUrl);
         attachments.add(newAttachment);
         return this;
     }
+
+    public SlackResponse addAttachmentText(final String attachmentText){
+        return addAttachment(null, attachmentText, null);
+    }
+
 
     public SlackResponse setText(final String replyText){
         text = replyText;

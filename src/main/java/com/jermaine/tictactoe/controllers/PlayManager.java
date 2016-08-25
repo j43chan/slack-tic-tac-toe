@@ -4,6 +4,7 @@ import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.GameRoom;
+import com.jermaine.tictactoe.utils.GifStrings;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -67,6 +68,9 @@ public class PlayManager {
                 //if a game has ended, remove it from the gameroom list so users can startService another game in that channel.
                 if (gameRoom.hasGameEnded()) {
                     gameRoomList.remove(slackRequest.getChannel_id());
+                    slackResponse.addAttachment(null,
+                            null,
+                            gameRoom.isGameInWinState() ? GifStrings.WIN : GifStrings.DRAW);
                 } else {
                     slackResponse.includePlayCommand();
                 }

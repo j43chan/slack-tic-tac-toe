@@ -4,6 +4,7 @@ import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.GameRoom;
+import com.jermaine.tictactoe.utils.GifStrings;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -49,6 +50,7 @@ public class ChallengeManager {
 
         return new SlackResponse()
                 .changeResponseTypeToInChannel()
-                .setText(challengeMsg.toString());
+                .setText(challengeMsg.toString())
+                .addAttachment(null, null, GifStrings.CHALLENGE_ISSUED);
     }
 }

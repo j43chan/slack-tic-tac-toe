@@ -4,6 +4,7 @@ import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.GameRoom;
+import com.jermaine.tictactoe.utils.GifStrings;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -77,12 +78,10 @@ public class ChallengeManagerTest {
         assertTrue(fakeGameList.get(fakeRequest.getChannel_id()).getPlayer2Name().equals("challenged_user"));
         assertTrue(response.getResponse_type().equals("in_channel"));
         assertTrue(response.getText().equals("user_1 has issued a ttt challenge to challenged_user\n<@challenged_user> type ```/ttt accept``` to start the game!"));
+        assertTrue(response.getAttachments().size() == 1);
+        assertTrue(response.getAttachments().get(0).getImage_url().equals(GifStrings.CHALLENGE_ISSUED));
     }
 
-    @Test
-    public void startChallenge_2_Request_Different_Channel_Id_Creates_2_Game_Rooms(){
-
-    }
 }
 
 

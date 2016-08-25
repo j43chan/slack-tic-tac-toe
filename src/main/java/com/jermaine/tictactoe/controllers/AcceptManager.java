@@ -4,6 +4,7 @@ import com.jermaine.tictactoe.exceptions.InvalidSlackRequest;
 import com.jermaine.tictactoe.models.SlackRequest;
 import com.jermaine.tictactoe.models.SlackResponse;
 import com.jermaine.tictactoe.models.GameRoom;
+import com.jermaine.tictactoe.utils.GifStrings;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -54,8 +55,8 @@ public class AcceptManager {
             return new SlackResponse()
                     .changeResponseTypeToInChannel()
                     .setText(gameRoom.getSlackRepresentationOfBoard())
-                    .addAttachmentText(gameRoom.getTurnInfo())
-                    .includePlayCommand();
+                    .includePlayCommand()
+                    .addAttachment(null, gameRoom.getTurnInfo(), GifStrings.CHALLENGE_ACCEPTED);
         }
     }
 }
