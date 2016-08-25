@@ -9,7 +9,7 @@ commands
 /ttt status - shows board, and indicates turn information
 ```
 
-#How To Play
+# How To Play
 
 1) Issue a challenge to any user in the channel e.g `/ttt challenge jermaine`
 2) The person being challenged, in this case jermaine, will need to accept the challenge by typing in `/ttt accept`
@@ -29,7 +29,11 @@ commands
 
 5) The game continues until the game is a draw or someone wins.
 
-#Note
+# How to run server locally
+1) mvn package
+2) java -jar target/slack-tic-tac-toe-1.0-SNAPSHOT.jar
+
+# Note
 ```
 you can accidentally challenge a non existent user, or the other player simply doesn't want to accept the challenge.
 in this case you can use `/ttt drop` to end the challenge.
@@ -40,5 +44,7 @@ only games waiting for challenge accept can be dropped.  once the game starts, y
 ```
 Each channel can at most support 1 game at a time
 ```
+
+
 
 
